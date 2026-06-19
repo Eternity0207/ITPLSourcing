@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #ff9933;
+  --color-primary-dark: #e67e22;
+  --color-secondary: #4285f4;
+  --color-secondary-dark: #0161cd;
+  --color-accent: #f0f4ff;
+  --color-text: #333333;
+  --color-text-muted: #7a7a7a;
+  --color-text-light: #444444;
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #333333;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-[#ff9933] px-8 py-3 text-base font-semibold text-white shadow-md transition-all hover:bg-[#e67e22] hover:shadow-lg;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-full border-2 border-[#ff9933] bg-white px-8 py-3 text-base font-semibold text-[#ff9933] transition-all hover:bg-[#ff9933] hover:text-white;
+}
+
+.section-padding {
+  @apply px-4 py-16 md:px-8 lg:px-16 xl:px-24;
+}
+
+.container-main {
+  @apply mx-auto max-w-[1200px];
+}
+
+.gradient-hero {
+  background: linear-gradient(10deg, #ff9933 18%, #ffffff 59%);
+  opacity: 0.46;
+}
+
+.card-shadow {
+  box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.5);
+}
+
+.swiper-pagination-bullet-active {
+  background: #ff9933 !important;
 }

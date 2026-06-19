@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ITPLSourcing — IntraTrade Private Limited
 
-## Getting Started
+India sourcing platform for global buyers. Built with Next.js 16, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Brand
+
+- **Company:** IntraTrade Private Limited
+- **Brand:** ITPLSourcing
+- **Market:** India sourcing for global buyers
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Pages
 
-To learn more about Next.js, take a look at the following resources:
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage with hero, audience sections, differentiators, testimonials |
+| `/contact` | Contact form & RFQ submission |
+| `/our-products` | Product category gallery |
+| `/about-us` | Company overview & platform modules |
+| `/blog` | Blog listing |
+| `/pricing` | Sourcing & Purchasing |
+| `/dropshipping` | Dropshipping service |
+| `/quality-control-service` | QC services |
+| `/import-from-india-tutorial` | Free sourcing tutorial |
+| `/sourcing-agent-guide` | Sourcing agent guide |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Endpoints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All backend routes live under `/api/endpoints/`:
 
-## Deploy on Vercel
+| Endpoint | Methods | Description |
+|----------|---------|-------------|
+| `/api/endpoints/contact` | GET, POST | General contact inquiries |
+| `/api/endpoints/rfq` | GET, POST | RFQ / sourcing requests |
+| `/api/endpoints/newsletter` | GET, POST | Ebook download signups |
+| `/api/endpoints/products` | GET | Product catalog with filtering |
+| `/api/endpoints/content` | GET | Stats, testimonials, modules |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Form submissions are persisted to `data/*.json` files.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS 4
+- Swiper (testimonial carousel)
+- Lucide React (icons)
+
+## License
+
+Proprietary — IntraTrade Private Limited
