@@ -30,7 +30,7 @@ export default function EbookSection() {
   };
 
   return (
-    <section className="section-padding bg-[#f0f4ff]">
+    <section className="section-padding bg-accent">
       <div className="container-main">
         <div className="flex flex-col items-center gap-10 lg:flex-row">
           <div className="hidden flex-1 lg:block">
@@ -53,16 +53,16 @@ export default function EbookSection() {
           </div>
 
           <div className="flex-1">
-            <h2 className="mb-4 text-2xl font-bold text-[#333] md:text-3xl">
+            <h2 className="mb-4 text-2xl font-bold text-text md:text-3xl">
               Want to import from India and boost your profits?
             </h2>
-            <p className="mb-4 text-[#7a7a7a]">
+            <p className="mb-4 text-text-muted">
               Download this practical tutorial now and learn:
             </p>
             <ul className="mb-6 space-y-2">
               {EBOOK_BULLETS.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2 text-sm text-[#444]">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ff9933]" />
+                <li key={bullet} className="flex items-start gap-2 text-sm text-text-light">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   {bullet}
                 </li>
               ))}
@@ -76,7 +76,7 @@ export default function EbookSection() {
                   required
                   value={form.firstName}
                   onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-                  className="rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+                  className="rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
                 />
                 <input
                   type="text"
@@ -84,7 +84,7 @@ export default function EbookSection() {
                   required
                   value={form.lastName}
                   onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-                  className="rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+                  className="rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
                 />
               </div>
               <input
@@ -93,7 +93,7 @@ export default function EbookSection() {
                 required
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
               />
               <button
                 type="submit"

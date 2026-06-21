@@ -16,8 +16,8 @@ export default function ContactPage() {
         <div className="absolute inset-0 gradient-hero" />
         <div className="section-padding relative">
           <div className="container-main text-center">
-            <h1 className="mb-4 text-3xl font-bold text-[#333] md:text-4xl">Talk to Us</h1>
-            <p className="text-lg text-[#7a7a7a]">
+            <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">Talk to Us</h1>
+            <p className="text-lg text-text-muted">
               Submit your inquiry and our expert agents will respond within 48 hours.
             </p>
           </div>
@@ -29,16 +29,16 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-3">
             <div className="space-y-6">
               <div className="card-shadow rounded-2xl bg-white p-6">
-                <h2 className="mb-4 text-lg font-bold text-[#333]">Contact Information</h2>
-                <div className="space-y-4 text-sm text-[#7a7a7a]">
+                <h2 className="mb-4 text-lg font-bold text-text">Contact Information</h2>
+                <div className="space-y-4 text-sm text-text-muted">
                   <p className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-5 w-5 shrink-0 text-[#ff9933]" />
-                    <a href={`mailto:${SITE.email}`} className="hover:text-[#ff9933]">
+                    <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                    <a href={`mailto:${SITE.email}`} className="hover:text-primary">
                       {SITE.email}
                     </a>
                   </p>
                   <p className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#ff9933]" />
+                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <span>
                       {SITE.phoneIndia}
                       <br />
@@ -46,7 +46,7 @@ export default function ContactPage() {
                     </span>
                   </p>
                   <p className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#ff9933]" />
+                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <span>
                       {SITE.phoneIntl}
                       <br />
@@ -54,11 +54,11 @@ export default function ContactPage() {
                     </span>
                   </p>
                   <p className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#ff9933]" />
+                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     {SITE.address}
                   </p>
                   <p className="flex items-start gap-3">
-                    <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#ff9933]" />
+                    <Clock className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <span>
                       {SITE.workingHours.weekdays}
                       <br />
@@ -70,9 +70,9 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-[#f0f4ff] p-6">
-                <h3 className="mb-2 font-bold text-[#333]">48-Hour Sourcing Report</h3>
-                <p className="text-sm text-[#7a7a7a]">
+              <div className="rounded-2xl bg-accent p-6">
+                <h3 className="mb-2 font-bold text-text">48-Hour Sourcing Report</h3>
+                <p className="text-sm text-text-muted">
                   Submit your RFQ and receive a comprehensive sourcing report with supplier
                   recommendations, pricing, and lead times within 48 hours.
                 </p>

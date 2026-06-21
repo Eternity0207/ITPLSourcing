@@ -57,8 +57,8 @@ export default function SourcingGuidePage() {
         <div className="absolute inset-0 gradient-hero" />
         <div className="section-padding relative">
           <div className="container-main text-center">
-            <h1 className="mb-4 text-3xl font-bold text-[#333] md:text-4xl">Sourcing Agent Guide</h1>
-            <p className="text-lg text-[#7a7a7a]">
+            <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">Sourcing Agent Guide</h1>
+            <p className="text-lg text-text-muted">
               Everything you need to know about working with {SITE.name}
             </p>
           </div>
@@ -67,31 +67,31 @@ export default function SourcingGuidePage() {
 
       <section className="section-padding bg-white">
         <div className="container-main">
-          <h2 className="mb-8 text-center text-2xl font-bold text-[#333]">How It Works</h2>
+          <h2 className="mb-8 text-center text-2xl font-bold text-text">How It Works</h2>
           <div className="grid gap-6 md:grid-cols-5">
             {STEPS.map((s) => (
               <div key={s.step} className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#ff9933] text-lg font-bold text-white">
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
                   {s.step}
                 </div>
-                <h3 className="mb-2 text-sm font-semibold text-[#333]">{s.title}</h3>
-                <p className="text-xs text-[#7a7a7a]">{s.description}</p>
+                <h3 className="mb-2 text-sm font-semibold text-text">{s.title}</h3>
+                <p className="text-xs text-text-muted">{s.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-[#f0f4ff]">
+      <section className="section-padding bg-accent">
         <div className="container-main">
-          <h2 className="mb-8 text-center text-2xl font-bold text-[#333]">
+          <h2 className="mb-8 text-center text-2xl font-bold text-text">
             What {SITE.name} Delivers
           </h2>
           <div className="mx-auto grid max-w-2xl gap-3 sm:grid-cols-2">
             {FEATURES.map((feature) => (
               <div key={feature} className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm">
-                <Check className="h-5 w-5 shrink-0 text-[#ff9933]" />
-                <span className="text-sm text-[#444]">{feature}</span>
+                <Check className="h-5 w-5 shrink-0 text-primary" />
+                <span className="text-sm text-text-light">{feature}</span>
               </div>
             ))}
           </div>
@@ -100,8 +100,8 @@ export default function SourcingGuidePage() {
 
       <section className="section-padding bg-white">
         <div className="container-main text-center">
-          <h2 className="mb-4 text-2xl font-bold text-[#333]">Ready to Get Started?</h2>
-          <p className="mb-6 text-[#7a7a7a]">
+          <h2 className="mb-4 text-2xl font-bold text-text">Ready to Get Started?</h2>
+          <p className="mb-6 text-text-muted">
             Join 4,000+ clients who trust {SITE.name} for their India sourcing needs.
           </p>
           <Link href="/contact" className="btn-primary">

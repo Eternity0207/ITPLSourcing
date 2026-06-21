@@ -44,10 +44,10 @@ export default function TutorialPage() {
         <div className="absolute inset-0 gradient-hero" />
         <div className="section-padding relative">
           <div className="container-main text-center">
-            <h1 className="mb-4 text-3xl font-bold text-[#333] md:text-4xl">
+            <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">
               Import from India Tutorial
             </h1>
-            <p className="text-lg text-[#7a7a7a]">
+            <p className="text-lg text-text-muted">
               Your free practical guide to sourcing from India
             </p>
           </div>
@@ -56,12 +56,12 @@ export default function TutorialPage() {
 
       <section className="section-padding bg-white">
         <div className="container-main max-w-3xl">
-          <div className="mb-8 rounded-2xl bg-[#f0f4ff] p-6">
-            <h2 className="mb-3 text-xl font-bold text-[#333]">What you&apos;ll learn:</h2>
+          <div className="mb-8 rounded-2xl bg-accent p-6">
+            <h2 className="mb-3 text-xl font-bold text-text">What you&apos;ll learn:</h2>
             <ul className="space-y-2">
               {EBOOK_BULLETS.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2 text-sm text-[#444]">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ff9933]" />
+                <li key={bullet} className="flex items-start gap-2 text-sm text-text-light">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   {bullet}
                 </li>
               ))}
@@ -71,16 +71,16 @@ export default function TutorialPage() {
           <div className="space-y-8">
             {CHAPTERS.map((chapter, i) => (
               <div key={chapter.title} className="border-b border-gray-100 pb-8 last:border-0">
-                <h3 className="mb-3 text-lg font-semibold text-[#ff9933]">
+                <h3 className="mb-3 text-lg font-semibold text-primary">
                   {i + 1}. {chapter.title}
                 </h3>
-                <p className="text-[#7a7a7a] leading-relaxed">{chapter.content}</p>
+                <p className="text-text-muted leading-relaxed">{chapter.content}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-10 text-center">
-            <p className="mb-4 text-[#7a7a7a]">
+            <p className="mb-4 text-text-muted">
               Need hands-on help? {SITE.name} agents handle the entire process for you.
             </p>
             <Link href="/contact" className="btn-primary">

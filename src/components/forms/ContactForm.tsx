@@ -57,65 +57,65 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="card-shadow space-y-4 rounded-2xl bg-white p-6 md:p-8">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-[#333]">First Name *</label>
+          <label className="mb-1 block text-sm font-medium text-text">First Name *</label>
           <input
             type="text"
             required
             value={form.firstName}
             onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-[#333]">Last Name *</label>
+          <label className="mb-1 block text-sm font-medium text-text">Last Name *</label>
           <input
             type="text"
             required
             value={form.lastName}
             onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
           />
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-[#333]">Email *</label>
+          <label className="mb-1 block text-sm font-medium text-text">Email *</label>
           <input
             type="email"
             required
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-[#333]">Phone</label>
+          <label className="mb-1 block text-sm font-medium text-text">Phone</label>
           <input
             type="tel"
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
           />
         </div>
       </div>
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-[#333]">Company</label>
+        <label className="mb-1 block text-sm font-medium text-text">Company</label>
         <input
           type="text"
           value={form.company}
           onChange={(e) => setForm({ ...form, company: e.target.value })}
-          className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+          className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
         />
       </div>
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-[#333]">Inquiry Type</label>
+        <label className="mb-1 block text-sm font-medium text-text">Inquiry Type</label>
         <select
           value={form.type}
           onChange={(e) => setForm({ ...form, type: e.target.value })}
-          className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+          className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
         >
           <option value="general">General Inquiry</option>
           <option value="new">Find New Suppliers</option>
@@ -129,32 +129,32 @@ export default function ContactForm() {
       {(form.type === "new" || form.type === "rfq") && (
         <>
           <div>
-            <label className="mb-1 block text-sm font-medium text-[#333]">Product Link / Description</label>
+            <label className="mb-1 block text-sm font-medium text-text">Product Link / Description</label>
             <input
               type="text"
               value={form.productLink}
               onChange={(e) => setForm({ ...form, productLink: e.target.value })}
-              className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+              className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
               placeholder="Paste product link or describe your product"
             />
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-sm font-medium text-[#333]">Target Price</label>
+              <label className="mb-1 block text-sm font-medium text-text">Target Price</label>
               <input
                 type="text"
                 value={form.targetPrice}
                 onChange={(e) => setForm({ ...form, targetPrice: e.target.value })}
-                className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-[#333]">MOQ Requirements</label>
+              <label className="mb-1 block text-sm font-medium text-text">MOQ Requirements</label>
               <input
                 type="text"
                 value={form.moq}
                 onChange={(e) => setForm({ ...form, moq: e.target.value })}
-                className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
               />
             </div>
           </div>
@@ -162,13 +162,13 @@ export default function ContactForm() {
       )}
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-[#333]">Message *</label>
+        <label className="mb-1 block text-sm font-medium text-text">Message *</label>
         <textarea
           required
           rows={4}
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-[#ff9933] focus:outline-none"
+          className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-primary focus:outline-none"
           placeholder="Tell us about your sourcing needs..."
         />
       </div>

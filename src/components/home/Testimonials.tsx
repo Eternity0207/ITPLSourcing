@@ -12,10 +12,10 @@ export default function Testimonials() {
     <section className="section-padding bg-white">
       <div className="container-main">
         <div className="mb-12 text-center">
-          <h2 className="mb-3 text-2xl font-bold text-[#333] md:text-3xl">
+          <h2 className="mb-3 text-2xl font-bold text-text md:text-3xl">
             4000+ clients trust ITPLSourcing
           </h2>
-          <p className="text-[#7a7a7a]">Clients worldwide share their thoughts about us</p>
+          <p className="text-text-muted">Clients worldwide share their thoughts about us</p>
         </div>
 
         <Swiper
@@ -42,11 +42,11 @@ export default function Testimonials() {
                     className="h-12 w-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold text-[#333]">{t.name}</p>
-                    <p className="text-xs text-[#7a7a7a]">{t.role}</p>
+                    <p className="font-semibold text-text">{t.name}</p>
+                    <p className="text-xs text-text-muted">{t.role}</p>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed text-[#7a7a7a]">{t.text}</p>
+                <p className="text-sm leading-relaxed text-text-muted">{t.text}</p>
               </div>
             </SwiperSlide>
           ))}

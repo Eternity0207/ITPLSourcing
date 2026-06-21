@@ -16,8 +16,8 @@ export default function BlogPage() {
         <div className="absolute inset-0 gradient-hero" />
         <div className="section-padding relative">
           <div className="container-main text-center">
-            <h1 className="mb-4 text-3xl font-bold text-[#333] md:text-4xl">Our Blog</h1>
-            <p className="text-lg text-[#7a7a7a]">
+            <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">Our Blog</h1>
+            <p className="text-lg text-text-muted">
               Practical guides and insights for sourcing from India
             </p>
           </div>
@@ -39,25 +39,25 @@ export default function BlogPage() {
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-[#ff9933] px-3 py-1 text-xs font-medium text-white">
+                  <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">
                     {post.category}
                   </span>
                 </div>
                 <div className="p-5">
-                  <time className="text-xs text-[#7a7a7a]">
+                  <time className="text-xs text-text-muted">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
                     })}
                   </time>
-                  <h2 className="my-2 text-lg font-semibold text-[#333] group-hover:text-[#ff9933]">
+                  <h2 className="my-2 text-lg font-semibold text-text group-hover:text-primary">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>
-                  <p className="text-sm text-[#7a7a7a]">{post.excerpt}</p>
+                  <p className="text-sm text-text-muted">{post.excerpt}</p>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-3 inline-block text-sm font-medium text-[#ff9933] hover:underline"
+                    className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
                   >
                     Read more →
                   </Link>

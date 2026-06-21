@@ -23,18 +23,18 @@ function NavDropdown({ label, href, items }: DropdownProps) {
     >
       <Link
         href={href || "#"}
-        className="flex items-center gap-1 px-4 py-2 text-[15px] font-medium text-[#333] transition-colors hover:text-[#ff9933]"
+        className="flex items-center gap-1 px-4 py-2 text-[15px] font-medium text-text transition-colors hover:text-primary"
       >
         {label}
         <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </Link>
       {open && (
-        <div className="absolute left-0 top-full z-50 min-w-[240px] rounded-lg border border-gray-100 bg-white py-2 shadow-xl">
+        <div className="absolute left-0 top-full z-50 min-w-[240px] rounded-lg border border-primary/10 bg-white py-2 shadow-xl shadow-primary/5">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="block px-5 py-2.5 text-sm text-[#444] transition-colors hover:bg-[#f0f4ff] hover:text-[#ff9933]"
+              className="block px-5 py-2.5 text-sm text-text-light transition-colors hover:bg-accent hover:text-primary"
             >
               {item.label}
             </Link>
@@ -49,7 +49,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-primary/10 bg-white/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-3 md:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -67,7 +67,7 @@ export default function Header() {
           <NavDropdown label="Solutions" items={NAV.solutions} />
           <Link
             href="/our-products"
-            className="px-4 py-2 text-[15px] font-medium text-[#333] transition-colors hover:text-[#ff9933]"
+            className="px-4 py-2 text-[15px] font-medium text-text transition-colors hover:text-primary"
           >
             Products
           </Link>
@@ -98,14 +98,14 @@ export default function Header() {
             { label: "Resources", items: NAV.resources },
           ].map((section) => (
             <div key={section.label} className="mb-4">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#ff9933]">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
                 {section.label}
               </p>
               {section.items.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block py-2 text-sm text-[#444]"
+                  className="block py-2 text-sm text-text-light"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}

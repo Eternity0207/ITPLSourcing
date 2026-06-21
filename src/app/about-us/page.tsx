@@ -16,8 +16,8 @@ export default function AboutPage() {
         <div className="absolute inset-0 gradient-hero" />
         <div className="section-padding relative">
           <div className="container-main text-center">
-            <h1 className="mb-4 text-3xl font-bold text-[#333] md:text-4xl">About {SITE.name}</h1>
-            <p className="text-lg text-[#7a7a7a]">
+            <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">About {SITE.name}</h1>
+            <p className="text-lg text-text-muted">
               A vertically integrated procurement operating system for global importers
             </p>
           </div>
@@ -37,20 +37,20 @@ export default function AboutPage() {
               />
             </div>
             <div className="flex-1">
-              <h2 className="mb-4 text-2xl font-bold text-[#333]">
+              <h2 className="mb-4 text-2xl font-bold text-text">
                 One Point of Contact for Importing from India
               </h2>
-              <p className="mb-4 text-[#7a7a7a] leading-relaxed">
+              <p className="mb-4 text-text-muted leading-relaxed">
                 {SITE.legalName} ({SITE.name}) is not simply a sourcing marketplace. We are a
                 vertically integrated procurement operating system that manages the entire supply
                 chain lifecycle from product discovery to final customer delivery.
               </p>
-              <p className="mb-4 text-[#7a7a7a] leading-relaxed">
+              <p className="mb-4 text-text-muted leading-relaxed">
                 Founded in {SITE.founded} and headquartered in {SITE.headquarters}, we serve
                 Amazon FBA sellers, Shopify brands, dropshippers, retailers, wholesalers,
                 enterprises, and first-time importers worldwide.
               </p>
-              <p className="text-[#7a7a7a] leading-relaxed">
+              <p className="text-text-muted leading-relaxed">
                 Our core promise: end-to-end sourcing workflow support with human sourcing agents,
                 quality inspection focus, and 48-hour sourcing report turnaround.
               </p>
@@ -59,16 +59,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-[#f0f4ff]">
+      <section className="section-padding bg-accent">
         <div className="container-main">
-          <h2 className="mb-8 text-center text-2xl font-bold text-[#333]">
+          <h2 className="mb-8 text-center text-2xl font-bold text-text">
             {SITE.name} in Numbers
           </h2>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {STATS.map((stat) => (
               <div key={stat.label} className="rounded-2xl bg-white p-6 text-center shadow-md">
-                <p className="text-3xl font-bold text-[#ff9933]">{stat.value}</p>
-                <p className="mt-1 text-sm text-[#7a7a7a]">{stat.label}</p>
+                <p className="text-3xl font-bold text-primary">{stat.value}</p>
+                <p className="mt-1 text-sm text-text-muted">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -77,16 +77,16 @@ export default function AboutPage() {
 
       <section className="section-padding bg-white">
         <div className="container-main">
-          <h2 className="mb-8 text-center text-2xl font-bold text-[#333]">
+          <h2 className="mb-8 text-center text-2xl font-bold text-text">
             Our Platform Modules
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {MODULES.map((mod) => (
               <div key={mod.id} className="card-shadow rounded-2xl bg-white p-5">
-                <h3 className="mb-3 font-semibold text-[#ff9933]">{mod.title}</h3>
+                <h3 className="mb-3 font-semibold text-primary">{mod.title}</h3>
                 <ul className="space-y-1">
                   {mod.features.map((f) => (
-                    <li key={f} className="text-xs text-[#7a7a7a]">
+                    <li key={f} className="text-xs text-text-muted">
                       • {f}
                     </li>
                   ))}

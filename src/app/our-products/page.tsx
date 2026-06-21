@@ -19,8 +19,8 @@ export default function ProductsPage() {
         <div className="absolute inset-0 gradient-hero" />
         <div className="section-padding relative">
           <div className="container-main text-center">
-            <h1 className="mb-4 text-3xl font-bold text-[#333] md:text-4xl">Our Products</h1>
-            <p className="text-lg text-[#7a7a7a]">
+            <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">Our Products</h1>
+            <p className="text-lg text-text-muted">
               Browse product categories sourced directly from Indian factories
             </p>
           </div>
@@ -36,8 +36,8 @@ export default function ProductsPage() {
                 onClick={() => setCategory(cat)}
                 className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${
                   category === cat
-                    ? "bg-[#ff9933] text-white shadow-md"
-                    : "bg-[#f0f4ff] text-[#444] hover:bg-[#ff9933]/20"
+                    ? "bg-primary text-white shadow-md"
+                    : "bg-accent text-text-light hover:bg-primary/20"
                 }`}
               >
                 {cat}
@@ -58,16 +58,16 @@ export default function ProductsPage() {
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-[#ff9933] px-3 py-1 text-xs font-medium text-white">
+                  <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">
                     {product.category}
                   </span>
                 </div>
                 <div className="p-4">
-                  <h3 className="mb-1 font-semibold text-[#333]">{product.name}</h3>
-                  <p className="mb-3 text-xs text-[#7a7a7a]">MOQ: {product.moq}</p>
+                  <h3 className="mb-1 font-semibold text-text">{product.name}</h3>
+                  <p className="mb-3 text-xs text-text-muted">MOQ: {product.moq}</p>
                   <Link
                     href={`/contact?type=rfq&product=${encodeURIComponent(product.name)}`}
-                    className="text-sm font-medium text-[#ff9933] hover:underline"
+                    className="text-sm font-medium text-primary hover:underline"
                   >
                     Request Quote →
                   </Link>

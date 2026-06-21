@@ -11,13 +11,13 @@ const ICONS: Record<string, React.ElementType> = {
 
 export default function ValueAdded() {
   return (
-    <section className="section-padding bg-[#f0f4ff]">
+    <section className="section-padding bg-accent">
       <div className="container-main">
         <div className="mb-12 text-center">
-          <h2 className="mb-3 text-2xl font-bold text-[#333] md:text-3xl">
+          <h2 className="mb-3 text-2xl font-bold text-text md:text-3xl">
             Value-added services
           </h2>
-          <p className="text-[#7a7a7a]">
+          <p className="text-text-muted">
             Additional services to streamline operations and save costs.
           </p>
         </div>
@@ -30,13 +30,13 @@ export default function ValueAdded() {
                 key={service.title}
                 className="rounded-2xl bg-white p-6 text-center shadow-md transition-transform hover:-translate-y-1"
               >
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#f0f4ff]">
-                  <Icon className="h-7 w-7 text-[#ff9933]" />
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent">
+                  <Icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-[#333]">
+                <h3 className="mb-2 text-lg font-semibold text-text">
                   {service.title}
                 </h3>
-                <p className="text-sm text-[#7a7a7a]">{service.description}</p>
+                <p className="text-sm text-text-muted">{service.description}</p>
               </div>
             );
           })}

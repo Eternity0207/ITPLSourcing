@@ -8,7 +8,7 @@ export default function AudienceSections() {
       {AUDIENCE_SECTIONS.map((section) => (
         <section
           key={section.id}
-          className={`section-padding ${section.reverse ? "bg-[#f0f4ff]" : "bg-white"}`}
+          className={`section-padding ${section.reverse ? "bg-accent" : "bg-white"}`}
         >
           <div className="container-main">
             <div
@@ -26,13 +26,13 @@ export default function AudienceSections() {
                 />
               </div>
               <div className="flex-1">
-                <h2 className="mb-2 text-2xl font-bold text-[#333] md:text-3xl">
+                <h2 className="mb-2 text-2xl font-bold text-text md:text-3xl">
                   {section.title}
                 </h2>
-                <p className="mb-4 text-lg font-semibold text-[#ff9933]">
+                <p className="mb-4 text-lg font-semibold text-primary">
                   {section.subtitle}
                 </p>
-                <p className="mb-6 text-[#7a7a7a] leading-relaxed">
+                <p className="mb-6 text-text-muted leading-relaxed">
                   {section.description}
                 </p>
                 <Link href="/contact" className="btn-primary">

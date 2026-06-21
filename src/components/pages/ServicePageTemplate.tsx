@@ -24,8 +24,8 @@ export default function ServicePageTemplate({
         <div className="absolute inset-0 gradient-hero" />
         <div className="section-padding relative">
           <div className="container-main text-center">
-            <h1 className="mb-4 text-3xl font-bold text-[#333] md:text-4xl">{title}</h1>
-            <p className="text-lg font-semibold text-[#ff9933]">{subtitle}</p>
+            <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">{title}</h1>
+            <p className="text-lg font-semibold text-primary">{subtitle}</p>
           </div>
         </div>
       </section>
@@ -43,12 +43,12 @@ export default function ServicePageTemplate({
               />
             </div>
             <div className="flex-1">
-              <p className="mb-6 text-lg leading-relaxed text-[#7a7a7a]">{description}</p>
+              <p className="mb-6 text-lg leading-relaxed text-text-muted">{description}</p>
               <ul className="mb-8 space-y-3">
                 {features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#ff9933]" />
-                    <span className="text-[#444]">{feature}</span>
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                    <span className="text-text-light">{feature}</span>
                   </li>
                 ))}
               </ul>

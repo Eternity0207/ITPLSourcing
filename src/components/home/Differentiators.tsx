@@ -28,7 +28,7 @@ export default function Differentiators() {
   return (
     <section className="section-padding bg-white">
       <div className="container-main">
-        <h2 className="mb-12 text-center text-2xl font-bold text-[#333] md:text-3xl">
+        <h2 className="mb-12 text-center text-2xl font-bold text-text md:text-3xl">
           What sets ITPLSourcing apart
         </h2>
 
@@ -46,22 +46,22 @@ export default function Differentiators() {
                     >
                       <span className="flex items-center gap-3">
                         <Icon
-                          className={`h-5 w-5 ${isActive ? "text-[#ff9933]" : "text-[#333]"}`}
+                          className={`h-5 w-5 ${isActive ? "text-primary" : "text-text"}`}
                         />
                         <span
-                          className={`font-semibold ${isActive ? "text-[#ff9933]" : "text-[#333]"}`}
+                          className={`font-semibold ${isActive ? "text-primary" : "text-text"}`}
                         >
                           {item.title}
                         </span>
                       </span>
                       <ChevronDown
-                        className={`h-4 w-4 text-[#444] transition-transform ${
-                          isActive ? "rotate-180 text-[#ff9933]" : ""
+                        className={`h-4 w-4 text-text-light transition-transform ${
+                          isActive ? "rotate-180 text-primary" : ""
                         }`}
                       />
                     </button>
                     {isActive && (
-                      <p className="pb-4 pl-8 text-sm leading-relaxed text-[#7a7a7a]">
+                      <p className="pb-4 pl-8 text-sm leading-relaxed text-text-muted">
                         {item.description}
                       </p>
                     )}
@@ -72,17 +72,17 @@ export default function Differentiators() {
           </div>
 
           <div className="flex-1">
-            <div className="rounded-2xl bg-[#f0f4ff] p-8">
-              <h3 className="mb-8 text-center text-xl font-bold text-[#333]">
+            <div className="rounded-2xl bg-accent p-8">
+              <h3 className="mb-8 text-center text-xl font-bold text-text">
                 ITPLSourcing in Numbers
               </h3>
               <div className="grid grid-cols-2 gap-6">
                 {STATS.map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <p className="text-3xl font-bold text-[#ff9933] md:text-4xl">
+                    <p className="text-3xl font-bold text-primary md:text-4xl">
                       {stat.value}
                     </p>
-                    <p className="mt-1 text-sm text-[#7a7a7a]">{stat.label}</p>
+                    <p className="mt-1 text-sm text-text-muted">{stat.label}</p>
                   </div>
                 ))}
               </div>
