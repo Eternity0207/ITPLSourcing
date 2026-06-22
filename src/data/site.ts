@@ -1,10 +1,13 @@
 export const SITE = {
-  name: "ITPLSourcing",
+  name: "IntraTrade Global",
   legalName: "IntraTrade Private Limited",
-  tagline: "India Sourcing Agent Trusted by 4000+ Clients",
+  domain: "intratradeglobal.com",
+  url: "https://intratradeglobal.com",
+  tagline: "Your Trusted India Sourcing Partner",
   description:
-    "Help you find the best price factories in India, follow up production, ensure quality. One-stop service for Amazon Sellers. 4,000+ happy clients.",
-  email: "contact@itplsourcing.com",
+    "IntraTrade Global helps international buyers source quality products from India — from supplier discovery and production oversight to quality checks and global delivery. One partner for e-commerce sellers, brands, and importers.",
+  email: "contact@intratradeglobal.com",
+  notificationEmail: "manispotify001@gmail.com",
   phoneIndia: "+91 22 4890 1200",
   phoneIntl: "+91 98765 43210",
   address: "Mumbai, Maharashtra, India",
@@ -17,6 +20,13 @@ export const SITE = {
   },
 };
 
+export const URGENCY_OPTIONS = [
+  { value: "immediate", label: "Immediate (Within 1–2 months)" },
+  { value: "high", label: "High (Within 3–6 months)" },
+  { value: "standard", label: "Standard (Over 6 months)" },
+  { value: "exploratory", label: "Exploratory / Research" },
+] as const;
+
 export const NAV = {
   services: [
     { label: "Sourcing & Purchasing", href: "/pricing" },
@@ -28,7 +38,7 @@ export const NAV = {
     { label: "Private Label", href: "/private-label-packaging-service" },
     { label: "Product Development", href: "/product-development" },
     { label: "Shipping Solution", href: "/shipping-and-cargo-consolidation-service" },
-    { label: "Amazon FBA", href: "/amazon-fba-prep-service" },
+    { label: "E-commerce Fulfillment", href: "/amazon-fba-prep-service" },
     { label: "Quality Control", href: "/quality-control-service" },
     { label: "Credit Payment Terms", href: "/credit-payment-terms" },
     { label: "Affiliate Program", href: "/affiliates" },
@@ -46,49 +56,49 @@ export const NAV = {
 };
 
 export const STATS = [
-  { value: "4,000+", label: "Happy Clients" },
-  { value: "100+", label: "Million-dollar Sellers" },
-  { value: "500k+", label: "Our Followers" },
-  { value: "200+", label: "Professional Staff" },
+  { value: "4,000+", label: "Clients Worldwide" },
+  { value: "100+", label: "Seven-Figure Brands" },
+  { value: "500k+", label: "Community Reach" },
+  { value: "200+", label: "Sourcing Specialists" },
 ];
 
 export const AUDIENCE_SECTIONS = [
   {
-    id: "amazon",
-    title: "Tailored for Amazon sellers",
-    subtitle: "Trusted by top Amazon trainers",
+    id: "ecommerce",
+    title: "Built for e-commerce sellers",
+    subtitle: "Trusted by growing online brands",
     description:
-      "We provide customized solutions to enhance your brand, like logo printing, personalized packaging, and product upgrades for a better look and performance. We also bring your ideas to life with a cost-effective production plan, covering everything from prototyping to final production.",
+      "Whether you sell on marketplaces or your own store, we help you launch and scale with custom branding, packaging upgrades, and product refinements. From prototype to bulk production, our team builds a cost-effective plan around your specifications and margins.",
     image: "/images/hero/amazon-warehouse.jpg",
-    imageAlt: "Amazon FBA warehouse fulfillment",
+    imageAlt: "E-commerce fulfillment and product preparation",
     reverse: false,
   },
   {
     id: "dropshipping",
-    title: "Global dropshipping at factory prices",
-    subtitle: "Flexible inventory needs",
+    title: "Dropshipping at factory-direct prices",
+    subtitle: "Flexible, low-inventory fulfillment",
     description:
-      "Our advantage over other dropshipping companies lies in our India sourcing expertise. We help you greatly reduce product costs while ensuring shorter lead times and faster shipping. We offer guaranteed compensation for lost packages or defective items, giving you peace of mind with every order.",
+      "Our India sourcing network gives dropshippers a real edge: lower unit costs, dependable lead times, and faster international shipping. We stand behind every shipment with compensation for lost or defective orders, so you can sell with confidence.",
     image: "/images/hero/dropshipping-logistics.jpg",
     imageAlt: "Global dropshipping logistics and delivery",
     reverse: true,
   },
   {
     id: "retailers",
-    title: "Efficient sourcing for retailers",
-    subtitle: "Save 30% vs. local suppliers",
+    title: "Reliable sourcing for retailers",
+    subtitle: "Save up to 30% vs. local suppliers",
     description:
-      "We source a wide range of SKUs directly from Indian factories for retailers like supermarkets, mobile accessory stores, and restaurants. As your reliable supply chain partner, we manage multiple suppliers on your behalf and provide favorable credit terms to boost your business growth.",
+      "We connect retailers — from supermarkets to specialty stores — with verified Indian manufacturers across hundreds of SKUs. As your supply chain partner, we coordinate multiple vendors, consolidate shipments, and offer credit terms that support steady growth.",
     image: "/images/hero/retail-sourcing.jpg",
     imageAlt: "Retail store product sourcing",
     reverse: false,
   },
   {
     id: "enterprises",
-    title: "Procurement for government and enterprises",
-    subtitle: "Reliable lead times. Quality guaranteed.",
+    title: "Procurement for enterprises and institutions",
+    subtitle: "Predictable timelines. Rigorous quality.",
     description:
-      "We are supplying products to large enterprises, government agencies, and schools across various categories. Our clients trust us for reliable timelines and strict quality control, regardless of order size or project complexity.",
+      "Government agencies, schools, and large organizations rely on us for category-wide procurement. No matter the order size or complexity, we deliver on schedule with documented quality control at every stage.",
     image: "/images/hero/enterprise-procurement.jpg",
     imageAlt: "Enterprise procurement and supply chain",
     reverse: true,
@@ -99,37 +109,37 @@ export const DIFFERENTIATORS = [
   {
     title: "Quality Assurance",
     description:
-      "We place a strong emphasis on product quality. We conduct a higher percentage of product checks compared to third-party inspection companies, and we offer this service for free. Moreover, we are the only sourcing company that provides 1-by-1 inspections to minimize the defect rate to zero.",
+      "Quality is non-negotiable. We run more thorough inspections than typical third-party agencies — included at no extra charge. Our team can perform piece-by-piece checks to drive defect rates down before goods leave the factory.",
     icon: "shield-check",
   },
   {
-    title: "Competitive Prices",
+    title: "Transparent Pricing",
     description:
-      "Helping clients obtain competitive prices is one of our primary objectives. While many sourcing companies attract new clients with low service fees, they often quote expensive product prices. We, on the other hand, are transparent and encourage our clients to compare product prices to ensure they consistently receive competitive quotes from us.",
+      "Competitive landed costs are central to what we do. Unlike agents who quote low fees but inflate product prices, we share factory quotes openly and welcome side-by-side comparisons so you always know what you are paying for.",
     icon: "indian-rupee",
   },
   {
-    title: "Commitment to Our Clients",
+    title: "Long-Term Partnership",
     description:
-      "We take all our clients seriously, regardless of the size of their orders, as we aim to foster long-term relationships. We make every effort to secure compensation and minimize your losses in the event of receiving defective products.",
+      "Every client matters — from first-time importers to established brands. We work to resolve quality issues quickly, secure fair compensation when problems arise, and build relationships that last beyond a single order.",
     icon: "handshake",
   },
   {
-    title: "Professional Sourcing Team",
+    title: "Experienced Sourcing Team",
     description:
-      "Our company has over 200 employees, each with years of experience in India sourcing across a wide range of products — covering electronics, textiles, handicrafts, industrial goods, and more.",
+      "Over 200 specialists cover electronics, textiles, handicrafts, industrial goods, and more. Each agent brings years of on-the-ground experience negotiating with Indian manufacturers on your behalf.",
     icon: "users",
   },
   {
-    title: "In-house Packaging Solution",
+    title: "In-House Packaging",
     description:
-      "Our warehouse boasts a dedicated production department that sets us apart from many other factories. We're able to complete packaging work that others cannot, including highly customized packaging for smaller orders, purchasing accessories to create bundled products, and conducting full inspections of products.",
+      "Our facilities include dedicated packaging lines for custom bundles, accessory kits, and small-batch private label runs that many factories cannot handle — plus full pre-shipment inspection before dispatch.",
     icon: "package",
   },
   {
-    title: "Special Services for Growing Businesses",
+    title: "Scale-Ready Services",
     description:
-      "For large-scale or rapidly expanding companies, we offer a range of additional services. This includes assigning a team of up to 20 people, providing credit payment terms after receiving goods, and more.",
+      "Fast-growing companies get dedicated account teams, credit terms after delivery, and tailored workflows — so your sourcing operation scales as fast as your sales channels do.",
     icon: "trending-up",
   },
 ];
@@ -137,26 +147,22 @@ export const DIFFERENTIATORS = [
 export const VALUE_ADDED = [
   {
     title: "Factory & Supplier Audit",
-    description:
-      "We assist you in visiting the supplier's warehouse for a comprehensive assessment.",
+    description: "On-site visits and supplier assessments before you commit to production.",
     icon: "building-2",
   },
   {
-    title: "1-by-1 Product Inspection",
-    description:
-      "We can minimize the defect rate to zero and resolve any quality issues.",
+    title: "Piece-by-Piece Inspection",
+    description: "Granular QC to catch defects early and protect your brand reputation.",
     icon: "search",
   },
   {
     title: "Warehousing & Storage",
-    description:
-      "Low-cost storage in India gives you greater flexibility in shipment arranging.",
+    description: "Affordable storage in India for flexible shipping and order consolidation.",
     icon: "warehouse",
   },
   {
-    title: "Lifestyle Photography",
-    description:
-      "Our skilled designers can capture and create high-quality product photos for you.",
+    title: "Product Photography",
+    description: "Professional lifestyle and catalog images ready for your listings and ads.",
     icon: "camera",
   },
 ];
@@ -164,82 +170,81 @@ export const VALUE_ADDED = [
 export const TESTIMONIALS = [
   {
     name: "Rahul Sharma",
-    role: "Founder of D2C Brands India",
+    role: "Founder, D2C Brands India",
     image: "/images/clients/steve.png",
-    text: "Using ITPLSourcing was 100% worth it. My original supplier had a production delay so I used ITPLSourcing to help me find a new factory quickly. And finally, I received high-quality products within 2 months. ITPLSourcing has strict production follow-up management. They can solve the quality issues to avoid the risks. That saved me time and money.",
+    text: "When my original supplier fell behind schedule, IntraTrade Global found a replacement factory within weeks. The products arrived on spec within two months. Their production tracking and QC saved us both time and rework costs.",
   },
   {
     name: "Priya Mehta",
     role: "E-commerce Entrepreneur",
     image: "/images/clients/janelle.jpg",
-    text: "I have been working with ITPLSourcing for a few years now. My contact agent is Sarah, she has excellent English and has sourced quality products for my business at good prices. They source everything and assemble/pack for me and then arrange the shipping. I would never go back to sourcing myself.",
+    text: "I have partnered with IntraTrade Global for several years. My account manager sources, assembles, and packs products before arranging shipping — all at fair prices. I would not go back to sourcing on my own.",
   },
   {
     name: "Iconic Retail",
     role: "Retail Chain",
     image: "/images/clients/iconic-retail.jpg",
-    text: "ITPLSourcing is an easy company to deal with. Especially our agent Marc. He will make sure that the products we get are all A+ and he will tell you if the products are good or bad. 5 stars for this company.",
+    text: "Straightforward to work with and consistently honest about product quality. They flag issues before shipment rather than after — exactly what a retail buyer needs.",
   },
   {
     name: "Arjun Patel",
-    role: "Amazon FBA Seller",
+    role: "Online Marketplace Seller",
     image: "/images/clients/bilal.jpg",
-    text: "Great sourcing agents. I worked with Christina for the last year to source products. Always reliable and products are of high quality. 3 orders this year and plan on more next year.",
+    text: "Reliable agents and consistently good product quality. Three successful orders this year, and we are already planning the next production run.",
   },
   {
     name: "Ananya Reddy",
     role: "Shopify Brand Owner",
     image: "/images/clients/angela.jpg",
-    text: "I love how personable they were and very timely. In the first week because of the time difference we set up a time to where we would both be online at the same time so we could message back and forth. This was super helpful in making the process fast and efficient.",
+    text: "Responsive, personable, and efficient. They coordinated overlapping time zones so we could resolve questions in real time — the process felt fast and well managed.",
   },
   {
     name: "Cynthia Blue",
     role: "Import Business",
     image: "/images/clients/cynthia.jpg",
-    text: "ITPLSourcing is amazing! I learned this company from YouTube and now I'm working with it and the assigned agent I'm working with is very thorough, capable, knowledgeable and patient! I'm absolutely satisfied with the service.",
+    text: "Discovered IntraTrade Global through an industry channel and have been impressed ever since. My assigned agent is thorough, patient, and clearly experienced with India manufacturing.",
   },
   {
     name: "Teresa H. Neria",
     role: "Private Label Seller",
     image: "/images/clients/teresa.jpg",
-    text: "I want to thank the team at ITPLSourcing who made it possible for me to source from India. The products I received are just as I imagined them! Jeyson was very helpful. The boxes came very well packaged and everything met the quality standards.",
+    text: "They made sourcing from India straightforward for a first-time importer. Products matched my specifications, packaging was solid, and quality met our standards throughout.",
   },
   {
     name: "Crystal Smith",
-    role: "Amazon FBA Newbie",
+    role: "New E-commerce Seller",
     image: "/images/clients/crystal.jpg",
-    text: "I ventured into an Amazon FBA business as a complete NEWB. I had zero experience and using ITPL made me so much more confident in the sourcing process. My agent Felix is very responsive and he even caught an error in my design that I overlooked.",
+    text: "As a complete beginner, I needed guidance at every step. IntraTrade Global walked me through supplier selection, sampling, and production — and even caught a design error I had missed.",
   },
   {
     name: "Hanna Zeidan",
-    role: "Long-term Client",
+    role: "Long-Term Client",
     image: "/images/clients/hanna.jpg",
-    text: "I've been working with them since 2018 and I have to say that they offer excellent service. They are professional and competent people that care for their customers. A+ company.",
+    text: "A client since 2018. Professional team, clear communication, and genuine care for outcomes. Highly recommended for anyone importing from India.",
   },
   {
     name: "Ander Seli",
     role: "Test Order Client",
     image: "/images/clients/ander.png",
-    text: "I did a small test order first, everything went very well. I received my first order and everything was fine. My agent Annie was very friendly, helpful, caring and offered better solutions to me.",
+    text: "Started with a small trial order and everything arrived as expected. Friendly support, practical advice, and better options than I had found independently.",
   },
 ];
 
 export const EBOOK_BULLETS = [
-  "Ways to find reliable Indian suppliers",
-  "Profitable products to source from India",
-  "Practical tips to get precise product quote",
-  "Shipping solutions based on time & cost",
-  "And much more...",
+  "How to vet reliable Indian manufacturers",
+  "High-margin product categories to explore",
+  "Tips for accurate quotes and specifications",
+  "Shipping options balanced for cost and speed",
+  "And more practical import guidance",
 ];
 
 export const FOOTER_LINKS = {
   main: [
     { label: "Home", href: "/" },
     { label: "Our Products", href: "/our-products" },
-    { label: "About ITPLSourcing", href: "/about-us" },
+    { label: "About IntraTrade Global", href: "/about-us" },
     { label: "Payment Information", href: "/payment" },
     { label: "Sourcing Tutorial", href: "/import-from-india-tutorial" },
-    { label: "Visit Mumbai", href: "/about-us" },
     { label: "Our Blog", href: "/blog" },
   ],
   services: [
@@ -252,7 +257,7 @@ export const FOOTER_LINKS = {
     { label: "Private Label", href: "/private-label-packaging-service" },
     { label: "Product Development", href: "/product-development" },
     { label: "Shipping Solution", href: "/shipping-and-cargo-consolidation-service" },
-    { label: "Amazon FBA", href: "/amazon-fba-prep-service" },
+    { label: "E-commerce Fulfillment", href: "/amazon-fba-prep-service" },
     { label: "Quality Control", href: "/quality-control-service" },
     { label: "Credit Payment Terms", href: "/credit-payment-terms" },
     { label: "Graphic Design", href: "/graphics-and-design-service" },
@@ -298,8 +303,8 @@ export const MODULES = [
   },
   {
     id: "ecommerce",
-    title: "Ecommerce Seller Platform",
-    features: ["Amazon FBA Prep", "Shopify Integration", "Dropshipping", "Order Fulfillment"],
+    title: "E-commerce Seller Platform",
+    features: ["Marketplace Prep", "Shopify Integration", "Dropshipping", "Order Fulfillment"],
   },
 ];
 
@@ -318,23 +323,23 @@ export const BLOG_POSTS = [
   {
     slug: "how-to-source-from-india",
     title: "How to Source Products from India: A Complete Guide",
-    excerpt: "Learn the step-by-step process of finding reliable Indian manufacturers and negotiating the best prices.",
+    excerpt: "A practical walkthrough for finding Indian manufacturers, comparing quotes, and managing your first production run.",
     date: "2026-03-15",
     image: "/images/products/blog-sourcing.webp",
     category: "Sourcing Guide",
   },
   {
     slug: "amazon-fba-india-sourcing",
-    title: "Amazon FBA Sourcing from India: What You Need to Know",
-    excerpt: "Everything Amazon sellers need to know about sourcing products from Indian factories for FBA.",
+    title: "E-commerce Sourcing from India: What Sellers Should Know",
+    excerpt: "Key considerations for online sellers sourcing private-label and branded products from Indian factories.",
     date: "2026-02-28",
     image: "/images/products/blog-amazon.webp",
-    category: "Amazon FBA",
+    category: "E-commerce",
   },
   {
     slug: "quality-control-best-practices",
     title: "Quality Control Best Practices for Indian Manufacturing",
-    excerpt: "How to ensure product quality when sourcing from India with proper inspection protocols.",
+    excerpt: "Inspection checkpoints and protocols that protect product quality when manufacturing in India.",
     date: "2026-02-10",
     image: "/images/products/blog-qc.webp",
     category: "Quality Control",
@@ -342,7 +347,7 @@ export const BLOG_POSTS = [
   {
     slug: "shipping-from-india-guide",
     title: "Shipping from India: Air vs Sea Freight Comparison",
-    excerpt: "Compare shipping methods, costs, and timelines when importing products from India.",
+    excerpt: "Compare methods, costs, and transit times when importing goods from India to your market.",
     date: "2026-01-22",
     image: "/images/products/blog-shipping.webp",
     category: "Logistics",
@@ -350,7 +355,7 @@ export const BLOG_POSTS = [
   {
     slug: "private-label-india",
     title: "Private Label Manufacturing in India: Opportunities & Tips",
-    excerpt: "Build your brand with private label products sourced from India's manufacturing hubs.",
+    excerpt: "How to build a branded product line using India's manufacturing strengths and export infrastructure.",
     date: "2026-01-05",
     image: "/images/products/blog-private-label.webp",
     category: "Private Label",
@@ -358,7 +363,7 @@ export const BLOG_POSTS = [
   {
     slug: "dropshipping-india-2026",
     title: "Dropshipping from India in 2026: Trends & Strategies",
-    excerpt: "Why Indian dropshipping is gaining momentum and how to leverage factory-direct pricing.",
+    excerpt: "Why factory-direct Indian dropshipping is gaining traction and how to structure a profitable model.",
     date: "2025-12-18",
     image: "/images/products/blog-dropshipping.webp",
     category: "Dropshipping",
@@ -369,77 +374,77 @@ export const SERVICE_PAGES: Record<string, { title: string; subtitle: string; de
   pricing: {
     title: "Sourcing & Purchasing",
     subtitle: "End-to-end procurement from Indian factories",
-    description: "Our sourcing and purchasing service covers the entire procurement lifecycle — from supplier discovery to final delivery. Submit your RFQ and receive competitive quotes within 48 hours.",
+    description: "From supplier discovery to final delivery, our sourcing team manages the full procurement cycle. Submit your product enquiry and receive competitive quotes within 48 hours.",
     features: ["RFQ creation & tracking", "Multi-supplier quote comparison", "Factory verification & audits", "Negotiation management", "Purchase order management", "Production follow-up"],
     image: "/images/hero/amazon-warehouse.jpg",
   },
   dropshipping: {
     title: "Dropshipping Service",
-    subtitle: "Factory-direct dropshipping at unbeatable prices",
-    description: "Leverage our India sourcing expertise for dropshipping with lower costs, shorter lead times, and guaranteed compensation for lost or defective packages.",
+    subtitle: "Factory-direct dropshipping at competitive rates",
+    description: "Use our India network for dropshipping with lower unit costs, shorter lead times, and protection against lost or defective shipments.",
     features: ["Product sourcing", "Order fulfillment", "Packaging customization", "Inventory management", "Fast shipping options", "Quality guarantee"],
     image: "/images/hero/dropshipping-logistics.jpg",
   },
   "graphics-and-design-service": {
     title: "Photos & Designs",
     subtitle: "Professional product photography and design",
-    description: "Our skilled designers capture and create high-quality product photos, packaging designs, and branding assets to make your products stand out.",
-    features: ["Lifestyle photography", "Product photography", "Packaging design", "Logo design", "Amazon listing images", "Brand asset creation"],
+    description: "High-quality product images, packaging concepts, and brand assets that help your listings and marketing stand out.",
+    features: ["Lifestyle photography", "Product photography", "Packaging design", "Logo design", "Listing images", "Brand asset creation"],
     image: "/images/hero/retail-sourcing.jpg",
   },
   "extra-service": {
     title: "Extra Service",
-    subtitle: "Additional services to streamline your operations",
-    description: "Beyond core sourcing, we offer a range of value-added services including factory visits, custom bundling, and specialized packaging solutions.",
+    subtitle: "Value-added support beyond core sourcing",
+    description: "Factory visits, custom bundling, accessory sourcing, and specialized packaging for orders that need extra attention.",
     features: ["Factory visits", "Custom bundling", "Accessory sourcing", "Special packaging", "Product assembly", "Gift set creation"],
     image: "/images/hero/enterprise-procurement.jpg",
   },
   "private-label-packaging-service": {
     title: "Private Label & Packaging",
     subtitle: "Build your brand with custom packaging",
-    description: "From logo printing to fully customized packaging, we help you create a professional brand presence with private label solutions tailored to your needs.",
+    description: "Logo printing, custom labels, and packaging tailored to your brand — from small batches to full production runs.",
     features: ["Logo printing", "Custom branding", "Product labels", "Product inserts", "Box design", "Packaging sourcing"],
     image: "/images/hero/amazon-warehouse.jpg",
   },
   "product-development": {
     title: "Product Development",
-    subtitle: "From idea to production",
-    description: "Turn your product ideas into reality with our end-to-end development workflow: Idea → Prototype → Testing → Packaging → Production → Shipping.",
+    subtitle: "From concept to production",
+    description: "Turn ideas into manufacturable products: prototyping, sampling, cost modeling, and production planning under one roof.",
     features: ["Prototype development", "Factory matching", "Cost estimation", "Material recommendations", "Sample management", "Manufacturing planning"],
     image: "/images/hero/dropshipping-logistics.jpg",
   },
   "shipping-and-cargo-consolidation-service": {
     title: "Shipping Solution",
     subtitle: "Door-to-door logistics from India",
-    description: "Compare air freight, sea freight, and express shipping options. We handle customs documentation, consolidated shipments, and real-time tracking.",
+    description: "Air, sea, and express options with customs support, consolidated shipments, and shipment tracking.",
     features: ["Air & sea freight", "Express shipping (DHL, FedEx, UPS)", "Freight quote comparison", "Customs documentation", "Consolidated shipping", "Shipment tracking"],
     image: "/images/hero/retail-sourcing.jpg",
   },
   "amazon-fba-prep-service": {
-    title: "Amazon FBA Prep Service",
-    subtitle: "Ready for Amazon fulfillment centers",
-    description: "We prepare your products for Amazon FBA with FNSKU labeling, carton labeling, bundling, poly bagging, and compliance with Amazon's requirements.",
-    features: ["FNSKU labeling", "Carton labeling", "Product bundling", "Poly bagging", "Compliance checks", "Direct to FBA shipping"],
+    title: "E-commerce Fulfillment Prep",
+    subtitle: "Ready for marketplace and 3PL warehouses",
+    description: "We prepare your products for marketplace fulfillment centers and third-party logistics — labeling, bundling, poly bagging, and compliance checks included.",
+    features: ["SKU labeling", "Carton labeling", "Product bundling", "Poly bagging", "Compliance checks", "Direct-to-warehouse shipping"],
     image: "/images/hero/enterprise-procurement.jpg",
   },
   "quality-control-service": {
     title: "Quality Control",
-    subtitle: "Industry-leading inspection services",
-    description: "Our QC team conducts sample, in-production, final, and 100% inspections with detailed photo and video reports — included free with every order.",
-    features: ["Sample inspection", "During production inspection", "Final inspection", "1-by-1 full inspection", "Photo & video reports", "Defect categorization"],
+    subtitle: "Rigorous inspection at every stage",
+    description: "Sample, in-line, final, and full-piece inspections with photo and video reports — included with every managed order.",
+    features: ["Sample inspection", "During production inspection", "Final inspection", "Piece-by-piece inspection", "Photo & video reports", "Defect categorization"],
     image: "/images/hero/amazon-warehouse.jpg",
   },
   "credit-payment-terms": {
     title: "Credit Payment Terms",
     subtitle: "Flexible payment for growing businesses",
-    description: "Qualified clients can access credit payment terms after receiving goods, helping you manage cash flow while scaling your business.",
+    description: "Qualified accounts can access credit terms after goods are received, improving cash flow as you scale.",
     features: ["Credit after delivery", "Flexible payment schedules", "Volume-based terms", "Enterprise accounts", "Invoice management", "Payment tracking"],
     image: "/images/hero/dropshipping-logistics.jpg",
   },
   affiliates: {
     title: "Affiliate Program",
-    subtitle: "Earn by referring clients to ITPLSourcing",
-    description: "Join our affiliate program and earn commissions for every client you refer. Perfect for consultants, trainers, and industry influencers.",
+    subtitle: "Earn by referring clients to IntraTrade Global",
+    description: "Consultants, trainers, and industry partners can earn commissions for every qualified referral.",
     features: ["Competitive commissions", "Dedicated affiliate dashboard", "Marketing materials", "Real-time tracking", "Monthly payouts", "Priority support"],
     image: "/images/hero/retail-sourcing.jpg",
   },

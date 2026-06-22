@@ -6,7 +6,7 @@ import CTASection from "@/components/home/CTASection";
 
 export const metadata: Metadata = {
   title: "Our Blog",
-  description: "Sourcing tips, guides, and industry insights from ITPLSourcing.",
+  description: "Sourcing tips, guides, and industry insights from IntraTrade Global.",
 };
 
 export default function BlogPage() {

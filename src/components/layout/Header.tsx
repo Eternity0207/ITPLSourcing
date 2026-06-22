@@ -76,7 +76,7 @@ export default function Header() {
         </nav>
 
         <Link href="/contact" className="btn-primary hidden text-sm lg:inline-flex">
-          Talk to us
+          Submit enquiry
         </Link>
 
         <button
@@ -114,7 +114,7 @@ export default function Header() {
             </div>
           ))}
           <Link href="/contact" className="btn-primary mt-2 w-full text-center" onClick={() => setMobileOpen(false)}>
-            Talk to us
+            Submit enquiry
           </Link>
         </div>
       )}

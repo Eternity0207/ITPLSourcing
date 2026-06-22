@@ -30,7 +30,7 @@ export default function AboutPage() {
             <div className="flex-1">
               <Image
                 src="/images/hero/enterprise-procurement.jpg"
-                alt="About ITPLSourcing"
+                alt={`About ${SITE.name}`}
                 width={1000}
                 height={788}
                 className="w-full rounded-2xl object-cover shadow-lg"
@@ -47,8 +47,8 @@ export default function AboutPage() {
               </p>
               <p className="mb-4 text-text-muted leading-relaxed">
                 Founded in {SITE.founded} and headquartered in {SITE.headquarters}, we serve
-                Amazon FBA sellers, Shopify brands, dropshippers, retailers, wholesalers,
-                enterprises, and first-time importers worldwide.
+                e-commerce sellers, Shopify and marketplace brands, dropshippers, retailers,
+                wholesalers, enterprises, and first-time importers worldwide.
               </p>
               <p className="text-text-muted leading-relaxed">
                 Our core promise: end-to-end sourcing workflow support with human sourcing agents,

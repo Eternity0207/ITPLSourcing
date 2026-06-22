@@ -46,7 +46,7 @@ const STEPS = [
   {
     step: "5",
     title: "Shipping & Delivery",
-    description: "Handle logistics, customs, and deliver to your door or Amazon fulfillment center.",
+    description: "Handle logistics, customs, and deliver to your door or fulfillment warehouse.",
   },
 ];
 

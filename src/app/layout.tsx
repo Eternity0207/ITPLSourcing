@@ -12,6 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: {
     default: `${SITE.name}: ${SITE.tagline}`,
     template: `%s | ${SITE.name}`,
@@ -20,16 +21,18 @@ export const metadata: Metadata = {
   keywords: [
     "India sourcing",
     "sourcing agent India",
-    "Amazon FBA India",
+    "e-commerce sourcing India",
     "dropshipping India",
     "private label India",
-    "ITPLSourcing",
+    "IntraTrade Global",
     "IntraTrade Private Limited",
+    "intratradeglobal.com",
   ],
   openGraph: {
     title: `${SITE.name}: ${SITE.tagline}`,
     description: SITE.description,
     siteName: SITE.name,
+    url: SITE.url,
     type: "website",
   },
 };

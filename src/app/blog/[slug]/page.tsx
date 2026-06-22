@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BLOG_POSTS } from "@/data/site";
+import { BLOG_POSTS, SITE } from "@/data/site";
 import CTASection from "@/components/home/CTASection";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -59,10 +59,10 @@ export default async function BlogPostPage({ params }: Props) {
             <p className="mt-4 leading-relaxed text-text-muted">
               Sourcing products from India offers significant advantages for global businesses —
               competitive factory pricing, diverse manufacturing capabilities, and growing export
-              infrastructure. At ITPLSourcing, we help you navigate every step of the process.
+              infrastructure. At {SITE.name}, we help you navigate every step of the process.
             </p>
             <p className="mt-4 leading-relaxed text-text-muted">
-              Whether you are an Amazon FBA seller, Shopify brand owner, or enterprise procurement
+              Whether you are an e-commerce seller, Shopify brand owner, or enterprise procurement
               team, our expert agents provide end-to-end support from supplier discovery to final
               delivery. Contact us today for a free consultation and 48-hour sourcing report.
             </p>

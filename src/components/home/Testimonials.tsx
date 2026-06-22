@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import { TESTIMONIALS } from "@/data/site";
+import { TESTIMONIALS, SITE } from "@/data/site";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -13,7 +13,7 @@ export default function Testimonials() {
       <div className="container-main">
         <div className="mb-12 text-center">
           <h2 className="mb-3 text-2xl font-bold text-text md:text-3xl">
-            4000+ clients trust ITPLSourcing
+            4,000+ clients trust {SITE.name}
           </h2>
           <p className="text-text-muted">Clients worldwide share their thoughts about us</p>
         </div>

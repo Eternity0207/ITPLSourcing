@@ -11,7 +11,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
-import { DIFFERENTIATORS, STATS } from "@/data/site";
+import { DIFFERENTIATORS, STATS, SITE } from "@/data/site";
 
 const ICONS: Record<string, React.ElementType> = {
   "shield-check": ShieldCheck,
@@ -29,7 +29,7 @@ export default function Differentiators() {
     <section className="section-padding bg-white">
       <div className="container-main">
         <h2 className="mb-12 text-center text-2xl font-bold text-text md:text-3xl">
-          What sets ITPLSourcing apart
+          What sets {SITE.name} apart
         </h2>
 
         <div className="flex flex-col gap-8 lg:flex-row">
@@ -74,7 +74,7 @@ export default function Differentiators() {
           <div className="flex-1">
             <div className="rounded-2xl bg-accent p-8">
               <h3 className="mb-8 text-center text-xl font-bold text-text">
-                ITPLSourcing in Numbers
+                {SITE.name} in Numbers
               </h3>
               <div className="grid grid-cols-2 gap-6">
                 {STATS.map((stat) => (
