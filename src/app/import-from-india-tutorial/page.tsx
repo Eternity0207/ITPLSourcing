@@ -13,7 +13,7 @@ const CHAPTERS = [
   {
     title: "Chapter 1: Finding Reliable Indian Suppliers",
     content:
-      "Learn how to identify trustworthy manufacturers in India's key industrial hubs — Mumbai, Delhi NCR, Bangalore, Chennai, and Ahmedabad. We cover factory verification, certification checks, and red flags to watch for.",
+      "Learn how to identify trustworthy manufacturers in India's key industrial hubs — Udaipur, Rajasthan, Delhi NCR, Mumbai, Bangalore, Chennai, and Ahmedabad. We cover factory verification, certification checks, and red flags to watch for.",
   },
   {
     title: "Chapter 2: Profitable Products to Source",

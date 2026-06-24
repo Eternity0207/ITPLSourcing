@@ -96,7 +96,6 @@ export async function POST(request: NextRequest) {
       contactName: "",
       companyName: "",
       email: "",
-      phone: "",
       productNames: "",
       productDescription: "",
       moq: "",
@@ -114,7 +113,6 @@ export async function POST(request: NextRequest) {
         contactName: String(formData.get("contactName") || ""),
         companyName: String(formData.get("companyName") || ""),
         email: String(formData.get("email") || ""),
-        phone: String(formData.get("phone") || ""),
         productNames: String(formData.get("productNames") || ""),
         productDescription: String(formData.get("productDescription") || ""),
         moq: String(formData.get("moq") || ""),
@@ -133,7 +131,6 @@ export async function POST(request: NextRequest) {
         contactName: body.contactName || `${body.firstName || ""} ${body.lastName || ""}`.trim(),
         companyName: body.companyName || body.company || "",
         email: body.email || "",
-        phone: body.phone || "",
         productNames: body.productNames || body.productLink || "",
         productDescription: body.productDescription || body.message || "",
         moq: body.moq || "",
@@ -144,9 +141,9 @@ export async function POST(request: NextRequest) {
       };
     }
 
-    const { contactName, email, phone, productNames, productDescription } = enquiry;
+    const { contactName, email, productNames, productDescription } = enquiry;
 
-    if (!contactName || !email || !phone || !productNames || !productDescription) {
+    if (!contactName || !email || !productNames || !productDescription) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 

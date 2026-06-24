@@ -25,13 +25,13 @@ async function appendJson(filename: string, data: unknown) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { firstName, lastName, email, phone, company, type, message } = body;
+    const { firstName, lastName, email, company, type, message } = body;
 
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    await appendJson("contacts.json", { firstName, lastName, email, phone, company, type, message });
+    await appendJson("contacts.json", { firstName, lastName, email, company, type, message });
 
     return NextResponse.json({
       success: true,

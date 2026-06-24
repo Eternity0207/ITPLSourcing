@@ -6,19 +6,22 @@ export const SITE = {
   tagline: "Your Trusted India Sourcing Partner",
   description:
     "IntraTrade Global helps international buyers source quality products from India — from supplier discovery and production oversight to quality checks and global delivery. One partner for e-commerce sellers, brands, and importers.",
-  email: "contact@intratradeglobal.com",
-  notificationEmail: "manispotify001@gmail.com",
-  phoneIndia: "+91 22 4890 1200",
-  phoneIntl: "+91 98765 43210",
-  address: "Mumbai, Maharashtra, India",
+  email: "inquiry@intratradeglobal.com",
+  notificationEmail: "inquiry@intratradeglobal.com",
+  address: "Udaipur, Rajasthan, India",
   founded: "2015",
-  headquarters: "Mumbai, India",
+  headquarters: "Udaipur, Rajasthan, India",
   workingHours: {
     weekdays: "Monday to Friday, 9:00 AM – 6:00 PM",
     saturday: "Saturday, 9:00 AM – 4:00 PM",
     timezone: "India Standard Time (IST)",
   },
 };
+
+export const POINTS_OF_CONTACT = [
+  { name: "Ayush", phone: "+91 88755 15444" },
+  { name: "Nitesh Tripathi", phone: "+91 81055 35577" },
+] as const;
 
 export const URGENCY_OPTIONS = [
   { value: "immediate", label: "Immediate (Within 1–2 months)" },

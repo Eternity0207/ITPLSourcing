@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import ContactForm from "@/components/forms/ContactForm";
-import { SITE } from "@/data/site";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { SITE, POINTS_OF_CONTACT } from "@/data/site";
+import { Mail, MapPin, Clock, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Product Sourcing Enquiry",
@@ -34,26 +34,29 @@ export default function ContactPage() {
                 <div className="space-y-4 text-sm text-text-muted">
                   <p className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                    <a href={`mailto:${SITE.email}`} className="hover:text-primary">
-                      {SITE.email}
-                    </a>
-                  </p>
-                  <p className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <span>
-                      {SITE.phoneIndia}
+                      <a href={`mailto:${SITE.email}`} className="hover:text-primary">
+                        {SITE.email}
+                      </a>
                       <br />
-                      <span className="text-xs">(India)</span>
+                      <span className="text-xs">For all inquiries and details</span>
                     </span>
                   </p>
-                  <p className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                    <span>
-                      {SITE.phoneIntl}
-                      <br />
-                      <span className="text-xs">(International)</span>
-                    </span>
-                  </p>
+                  <div className="space-y-3">
+                    <p className="text-xs font-medium uppercase tracking-wide text-text">Points of contact</p>
+                    {POINTS_OF_CONTACT.map((poc) => (
+                      <p key={poc.phone} className="flex items-start gap-3">
+                        <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                        <span>
+                          <span className="font-medium text-text">{poc.name}</span>
+                          <br />
+                          <a href={`tel:${poc.phone.replace(/\s/g, "")}`} className="hover:text-primary">
+                            {poc.phone}
+                          </a>
+                        </span>
+                      </p>
+                    ))}
+                  </div>
                   <p className="flex items-start gap-3">
                     <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     {SITE.address}

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FOOTER_LINKS, SITE } from "@/data/site";
-import { Mail, Phone } from "lucide-react";
+import { FOOTER_LINKS, POINTS_OF_CONTACT, SITE } from "@/data/site";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -59,30 +59,33 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-300">
               <p className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`mailto:${SITE.email}`} className="hover:text-primary">
-                  {SITE.email}
-                </a>
-              </p>
-              <p className="flex items-start gap-2">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>
-                  <a href={`tel:${SITE.phoneIntl.replace(/\s/g, "")}`} className="hover:text-primary">
-                    {SITE.phoneIntl}
+                  <a href={`mailto:${SITE.email}`} className="hover:text-primary">
+                    {SITE.email}
                   </a>
                   <br />
-                  <span className="text-xs text-gray-400">(Call from outside India)</span>
+                  <span className="text-xs text-gray-400">For all inquiries and details</span>
                 </span>
               </p>
               <p className="flex items-start gap-2">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>
-                  <a href={`tel:${SITE.phoneIndia.replace(/\s/g, "")}`} className="hover:text-primary">
-                    {SITE.phoneIndia}
-                  </a>
-                  <br />
-                  <span className="text-xs text-gray-400">(Call from India)</span>
-                </span>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                {SITE.address}
               </p>
+              <div className="space-y-2">
+                <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Points of contact</p>
+                {POINTS_OF_CONTACT.map((poc) => (
+                  <p key={poc.phone} className="flex items-start gap-2">
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <span>
+                      <span className="font-medium text-gray-200">{poc.name}</span>
+                      <br />
+                      <a href={`tel:${poc.phone.replace(/\s/g, "")}`} className="hover:text-primary">
+                        {poc.phone}
+                      </a>
+                    </span>
+                  </p>
+                ))}
+              </div>
             </div>
 
             <h3 className="mb-2 mt-6 text-sm font-bold uppercase tracking-wider text-primary">

@@ -14,7 +14,6 @@ export type SourcingEnquiry = {
   contactName: string;
   companyName: string;
   email: string;
-  phone: string;
   productNames: string;
   productDescription: string;
   moq: string;
@@ -53,7 +52,6 @@ function formatEnquiryText(enquiry: SourcingEnquiry, enquiryId: number) {
     `Contact Person: ${enquiry.contactName}`,
     `Company: ${enquiry.companyName || "—"}`,
     `Email: ${enquiry.email}`,
-    `Phone: ${enquiry.phone}`,
     "",
     `Product(s): ${enquiry.productNames}`,
     "",
@@ -69,6 +67,28 @@ function formatEnquiryText(enquiry: SourcingEnquiry, enquiryId: number) {
     enquiry.productLinks || "—",
     "",
     `Submitted via ${SITE.domain}`,
+  ].join("\n");
+}
+
+function formatConfirmationText(enquiry: SourcingEnquiry, enquiryId: number) {
+  return [
+    `Dear ${enquiry.contactName},`,
+    "",
+    `Thank you for your product sourcing enquiry with ${SITE.name}.`,
+    `We have received your submission (RFQ-${enquiryId}) and our team will review it within 48 hours.`,
+    "",
+    "Summary of your enquiry:",
+    "",
+    `Product(s): ${enquiry.productNames}`,
+    `MOQ: ${enquiry.moq || "—"}`,
+    `Target Price (USD): ${enquiry.targetPrice || "—"}`,
+    `Urgency: ${getUrgencyLabel(enquiry.urgency)}`,
+    "",
+    "If you need to add anything, reply to this email with your reference number.",
+    "",
+    `Best regards,`,
+    `${SITE.name}`,
+    SITE.email,
   ].join("\n");
 }
 
@@ -93,15 +113,24 @@ export async function sendSourcingEnquiryEmail(
     })),
   );
 
-  const to = process.env.NOTIFICATION_EMAIL || SITE.notificationEmail;
+  const inbox = process.env.NOTIFICATION_EMAIL || SITE.notificationEmail;
   const from = process.env.SMTP_FROM || process.env.SMTP_USER;
 
-  await transporter.sendMail({
-    from: `"${SITE.name}" <${from}>`,
-    to,
-    replyTo: enquiry.email,
-    subject: `[${SITE.name}] New sourcing enquiry from ${enquiry.contactName}`,
-    text: formatEnquiryText(enquiry, enquiryId),
-    attachments: mailAttachments,
-  });
+  await Promise.all([
+    transporter.sendMail({
+      from: `"${SITE.name}" <${from}>`,
+      to: inbox,
+      replyTo: enquiry.email,
+      subject: `[${SITE.name}] New sourcing enquiry from ${enquiry.contactName}`,
+      text: formatEnquiryText(enquiry, enquiryId),
+      attachments: mailAttachments,
+    }),
+    transporter.sendMail({
+      from: `"${SITE.name}" <${from}>`,
+      to: enquiry.email,
+      replyTo: inbox,
+      subject: `[${SITE.name}] We received your sourcing enquiry — RFQ-${enquiryId}`,
+      text: formatConfirmationText(enquiry, enquiryId),
+    }),
+  ]);
 }

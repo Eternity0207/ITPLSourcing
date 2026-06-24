@@ -24,7 +24,6 @@ type FormState = {
   contactName: string;
   companyName: string;
   email: string;
-  phone: string;
   productNames: string;
   productDescription: string;
   moq: string;
@@ -38,7 +37,6 @@ const initialForm: FormState = {
   contactName: "",
   companyName: "",
   email: "",
-  phone: "",
   productNames: "",
   productDescription: "",
   moq: "",
@@ -157,30 +155,15 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className="mb-1 block text-sm font-medium text-text">Email Address *</label>
-          <input
-            type="email"
-            required
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className={inputClass}
-          />
-        </div>
-        <div>
-          <label className="mb-1 block text-sm font-medium text-text">
-            Phone Number (including country code) *
-          </label>
-          <input
-            type="tel"
-            required
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            placeholder="+1 555 000 0000"
-            className={inputClass}
-          />
-        </div>
+      <div>
+        <label className="mb-1 block text-sm font-medium text-text">Email Address *</label>
+        <input
+          type="email"
+          required
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          className={inputClass}
+        />
       </div>
 
       <div>
