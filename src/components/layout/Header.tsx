@@ -51,7 +51,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-primary/10 bg-white/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-3 md:px-8">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/images/logo.svg"
             alt={`${SITE.name} logo`}
