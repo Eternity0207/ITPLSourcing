@@ -72,14 +72,52 @@ export const BUSINESS_HIGHLIGHTS = [
 export const STATS = BUSINESS_HIGHLIGHTS;
 
 export const HOW_WE_WORK = [
-  { step: 1, description: "Buyer shares product requirements." },
-  { step: 2, description: "We shortlist 3–5 suitable manufacturers." },
-  { step: 3, description: "We verify supplier credentials and production capability." },
-  { step: 4, description: "Samples are arranged for approval." },
-  { step: 5, description: "Commercial terms and production are finalized." },
-  { step: 6, description: "Quality inspection is conducted before shipment (if required)." },
-  { step: 7, description: "Export documentation and customs are managed." },
-  { step: 8, description: "Shipment is coordinated until delivery." },
+  {
+    step: 1,
+    title: "You Share Your Requirements",
+    description:
+      "Tell us your product specifications, quantity, target price, and delivery timeline.",
+  },
+  {
+    step: 2,
+    title: "We Shortlist Qualified Manufacturers",
+    description:
+      "We identify and shortlist 3–5 manufacturers best suited to your requirements.",
+  },
+  {
+    step: 3,
+    title: "We Verify Suppliers",
+    description:
+      "We assess factory credentials, production capacity, quality systems, and compliance standards.",
+  },
+  {
+    step: 4,
+    title: "We Arrange Samples",
+    description: "Samples are coordinated for your review and approval before production.",
+  },
+  {
+    step: 5,
+    title: "We Finalize Commercials",
+    description:
+      "Pricing, payment terms, production schedule, and order details are finalized.",
+  },
+  {
+    step: 6,
+    title: "We Monitor Production & Quality",
+    description:
+      "We oversee production and arrange pre-shipment quality inspections whenever required.",
+  },
+  {
+    step: 7,
+    title: "We Manage Export Documentation",
+    description:
+      "We handle export documentation, customs clearance, and shipping formalities.",
+  },
+  {
+    step: 8,
+    title: "We Coordinate Delivery",
+    description: "We manage logistics until your shipment reaches its destination.",
+  },
 ];
 
 export const PRACTICAL_SERVICES = [
