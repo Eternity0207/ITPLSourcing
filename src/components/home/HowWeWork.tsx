@@ -6,25 +6,28 @@ export default function HowWeWork() {
     <section className="section-padding bg-accent">
       <div className="container-main">
         <div className="mb-12 text-center">
-          <h2 className="mb-3 text-2xl font-bold text-text md:text-3xl">How we work</h2>
+          <h2 className="mb-3 text-2xl font-bold text-text md:text-3xl">How We Work</h2>
           <p className="text-text-muted">
             A clear process from your first enquiry to final delivery.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
           {HOW_WE_WORK.map((item) => (
-            <div
+            <li
               key={item.step}
-              className="rounded-2xl bg-white p-5 shadow-sm transition-transform hover:-translate-y-0.5"
+              className="rounded-2xl bg-white p-6 shadow-sm"
             >
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
-                {item.step}
+              <div className="mb-3 flex items-start gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                  {item.step}
+                </span>
+                <h3 className="pt-0.5 font-semibold leading-snug text-text">{item.title}</h3>
               </div>
-              <p className="text-sm leading-relaxed text-text-muted">{item.description}</p>
-            </div>
+              <p className="pl-11 text-sm leading-relaxed text-text-muted">{item.description}</p>
+            </li>
           ))}
-        </div>
+        </ol>
 
         <div className="mt-10 text-center">
           <Link href="/contact" className="btn-primary">

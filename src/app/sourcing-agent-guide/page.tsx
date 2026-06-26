@@ -11,12 +11,6 @@ export const metadata: Metadata = {
 
 const FEATURES = PRACTICAL_SERVICES.map((s) => s.title);
 
-const STEPS = HOW_WE_WORK.map((item) => ({
-  step: String(item.step),
-  title: `Step ${item.step}`,
-  description: item.description,
-}));
-
 export default function SourcingGuidePage() {
   return (
     <>
@@ -35,14 +29,16 @@ export default function SourcingGuidePage() {
       <section className="section-padding bg-white">
         <div className="container-main">
           <h2 className="mb-8 text-center text-2xl font-bold text-text">How We Work</h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map((s) => (
-              <div key={s.step} className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
-                  {s.step}
+          <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
+            {HOW_WE_WORK.map((item) => (
+              <div key={item.step} className="rounded-2xl bg-accent p-6">
+                <div className="mb-3 flex items-start gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                    {item.step}
+                  </div>
+                  <h3 className="pt-1 text-sm font-semibold leading-snug text-text">{item.title}</h3>
                 </div>
-                <h3 className="mb-2 text-sm font-semibold text-text">{s.title}</h3>
-                <p className="text-xs text-text-muted">{s.description}</p>
+                <p className="pl-[52px] text-sm text-text-muted">{item.description}</p>
               </div>
             ))}
           </div>
