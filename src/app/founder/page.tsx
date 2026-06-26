@@ -44,9 +44,8 @@ export default function FounderPage() {
                 and Indian factories.
               </p>
               <p className="mb-4 text-text-muted leading-relaxed">
-                Under his leadership, {SITE.name} has grown from a small sourcing consultancy to a
-                full-service procurement platform with 200+ employees, serving 4,000+ clients across
-                50+ countries.
+                Under his leadership, {SITE.name} has grown into a sourcing operation serving
+                buyers across 12+ countries with a network of 250+ verified Indian manufacturers.
               </p>
               <p className="text-text-muted leading-relaxed">
                 &ldquo;Our mission is simple: one point of contact for importing products from India.

@@ -10,9 +10,9 @@ export default function HeroSection() {
             Source Quality Products from India with Confidence
           </h1>
           <p className="mx-auto mb-8 max-w-3xl text-lg text-text-muted">
-            Finding reliable manufacturers and managing production across borders is hard.
-            IntraTrade Global handles the full journey — supplier discovery, production oversight,
-            quality checks, and delivery to your market.
+            We connect international buyers with verified Indian manufacturers — supplier
+            shortlisting, sample coordination, quality inspection, export paperwork, and shipping
+            support. Initial response within 24 hours.
           </p>
           <div className="mb-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/contact" className="btn-primary min-w-[200px]">

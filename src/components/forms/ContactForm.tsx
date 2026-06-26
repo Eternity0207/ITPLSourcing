@@ -322,7 +322,7 @@ export default function ContactForm() {
 
       {status === "success" && (
         <p className="text-center text-sm text-green-600">
-          Thank you! Your enquiry has been received. Our team will respond within 48 hours.
+          Thank you! Your enquiry has been received. Our team will respond within 24 hours.
         </p>
       )}
       {status === "error" && !fileError && (

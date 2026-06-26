@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: Props) {
             <p className="mt-4 leading-relaxed text-text-muted">
               Whether you are an e-commerce seller, Shopify brand owner, or enterprise procurement
               team, our expert agents provide end-to-end support from supplier discovery to final
-              delivery. Contact us today for a free consultation and 48-hour sourcing report.
+              delivery. Contact us to share your requirements — initial response within 24 hours.
             </p>
           </div>
           <div className="mt-8">

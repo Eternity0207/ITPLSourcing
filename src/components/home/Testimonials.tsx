@@ -13,9 +13,9 @@ export default function Testimonials() {
       <div className="container-main">
         <div className="mb-12 text-center">
           <h2 className="mb-3 text-2xl font-bold text-text md:text-3xl">
-            4,000+ clients trust {SITE.name}
+            Client feedback
           </h2>
-          <p className="text-text-muted">Clients worldwide share their thoughts about us</p>
+          <p className="text-text-muted">What buyers say about working with {SITE.name}</p>
         </div>
 
         <Swiper

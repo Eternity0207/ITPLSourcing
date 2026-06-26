@@ -9,13 +9,13 @@ export default function CTASection() {
           Ready to source from India?
         </h2>
         <p className="mb-8 text-lg text-white/90">
-          Partner with {SITE.name} for wholesale, private label, and custom manufacturing at competitive prices.
+          Verified manufacturers, multiple quotations, and end-to-end export support from India.
         </p>
         <Link
           href="/contact"
           className="inline-flex items-center justify-center rounded-full bg-white px-10 py-3 text-base font-semibold text-primary shadow-lg transition-all hover:bg-gray-50"
         >
-          Join 4,000+ clients worldwide
+          Submit sourcing enquiry
         </Link>
       </div>
     </section>

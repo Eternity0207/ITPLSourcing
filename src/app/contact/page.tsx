@@ -6,7 +6,7 @@ import { Mail, MapPin, Clock, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Product Sourcing Enquiry",
-  description: `Submit a product sourcing enquiry to ${SITE.legalName}. Share specifications, target pricing, and attachments — we respond within 48 hours.`,
+  description: `Submit a product sourcing enquiry to ${SITE.legalName}. Share specifications, target pricing, and attachments — we respond within 24 hours.`,
 };
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
             <h1 className="mb-4 text-3xl font-bold text-text md:text-4xl">Product Sourcing Enquiry</h1>
             <p className="mx-auto max-w-2xl text-lg text-text-muted">
               Tell us what you need to source from India. Our team at {SITE.legalName} will review
-              your requirements and respond within 48 hours.
+              your requirements and respond within 24 hours.
             </p>
           </div>
         </div>
@@ -75,10 +75,10 @@ export default function ContactPage() {
               </div>
 
               <div className="rounded-2xl bg-accent p-6">
-                <h3 className="mb-2 font-bold text-text">48-Hour Sourcing Report</h3>
+                <h3 className="mb-2 font-bold text-text">Sourcing Report</h3>
                 <p className="text-sm text-text-muted">
-                  After you submit your enquiry, we prepare a sourcing report with supplier options,
-                  indicative pricing, lead times, and recommended next steps.
+                  After your enquiry, we shortlist 3–5 suitable manufacturers, verify credentials,
+                  and share quotations with lead times and recommended next steps.
                 </p>
               </div>
 

@@ -75,7 +75,7 @@ function formatConfirmationText(enquiry: SourcingEnquiry, enquiryId: number) {
     `Dear ${enquiry.contactName},`,
     "",
     `Thank you for your product sourcing enquiry with ${SITE.name}.`,
-    `We have received your submission (RFQ-${enquiryId}) and our team will review it within 48 hours.`,
+    `We have received your submission (RFQ-${enquiryId}) and our team will respond within 24 hours.`,
     "",
     "Summary of your enquiry:",
     "",

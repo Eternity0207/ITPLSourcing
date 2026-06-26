@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { SITE, STATS, MODULES } from "@/data/site";
+import { SITE, BUSINESS_HIGHLIGHTS, MODULES } from "@/data/site";
 import CTASection from "@/components/home/CTASection";
 
 export const metadata: Metadata = {
@@ -51,8 +51,9 @@ export default function AboutPage() {
                 wholesalers, enterprises, and first-time importers worldwide.
               </p>
               <p className="text-text-muted leading-relaxed">
-                Our core promise: end-to-end sourcing workflow support with human sourcing agents,
-                quality inspection focus, and 48-hour sourcing report turnaround.
+                Our core focus: verified supplier introductions, multiple quotations, quality
+                inspection support, export documentation, and a dedicated sourcing manager for
+                every enquiry — with an initial response within 24 hours.
               </p>
             </div>
           </div>
@@ -62,10 +63,10 @@ export default function AboutPage() {
       <section className="section-padding bg-accent">
         <div className="container-main">
           <h2 className="mb-8 text-center text-2xl font-bold text-text">
-            {SITE.name} in Numbers
+            Business Highlights
           </h2>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-            {STATS.map((stat) => (
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {BUSINESS_HIGHLIGHTS.map((stat) => (
               <div key={stat.label} className="rounded-2xl bg-white p-6 text-center shadow-md">
                 <p className="text-3xl font-bold text-primary">{stat.value}</p>
                 <p className="mt-1 text-sm text-text-muted">{stat.label}</p>

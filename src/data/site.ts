@@ -58,20 +58,85 @@ export const NAV = {
   ],
 };
 
-export const STATS = [
-  { value: "4,000+", label: "Clients Worldwide" },
-  { value: "100+", label: "Seven-Figure Brands" },
-  { value: "500k+", label: "Community Reach" },
-  { value: "200+", label: "Sourcing Specialists" },
+export const BUSINESS_HIGHLIGHTS = [
+  { value: "250+", label: "Verified Indian Manufacturers" },
+  { value: "30+", label: "Product Categories" },
+  { value: "12+", label: "Buyer Countries" },
+  { value: "95%", label: "Supplier Verification Success Rate" },
+  { value: "24h", label: "Initial Response Time" },
+  { value: "End-to-End", label: "Sourcing & Export Support" },
+  { value: "Flexible", label: "MOQ for Small & Large Buyers" },
 ];
+
+/** @deprecated Use BUSINESS_HIGHLIGHTS */
+export const STATS = BUSINESS_HIGHLIGHTS;
+
+export const HOW_WE_WORK = [
+  { step: 1, description: "Buyer shares product requirements." },
+  { step: 2, description: "We shortlist 3–5 suitable manufacturers." },
+  { step: 3, description: "We verify supplier credentials and production capability." },
+  { step: 4, description: "Samples are arranged for approval." },
+  { step: 5, description: "Commercial terms and production are finalized." },
+  { step: 6, description: "Quality inspection is conducted before shipment (if required)." },
+  { step: 7, description: "Export documentation and customs are managed." },
+  { step: 8, description: "Shipment is coordinated until delivery." },
+];
+
+export const PRACTICAL_SERVICES = [
+  {
+    title: "Verified Manufacturer Network",
+    description:
+      "Access to 250+ pre-screened Indian manufacturers across 30+ product categories, with credentials and production capability checked before introduction.",
+    icon: "building-2",
+  },
+  {
+    title: "Multiple Supplier Quotations",
+    description:
+      "We collect and compare quotes from shortlisted factories so you can evaluate pricing, lead times, and terms side by side.",
+    icon: "file-text",
+  },
+  {
+    title: "Product Customization & Private Labeling",
+    description:
+      "Support for OEM/ODM modifications, packaging changes, branding, and private label runs aligned to your specifications.",
+    icon: "package",
+  },
+  {
+    title: "Third-Party Quality Inspection",
+    description:
+      "Pre-shipment inspection through independent agencies or our on-ground team — sample, in-line, and final checks as needed.",
+    icon: "shield-check",
+  },
+  {
+    title: "Export Documentation Assistance",
+    description:
+      "Help preparing invoices, packing lists, certificates of origin, and other paperwork required for customs clearance.",
+    icon: "clipboard-check",
+  },
+  {
+    title: "Logistics & Shipping Coordination",
+    description:
+      "Air, sea, and express freight options with consolidation, tracking, and handoff to your warehouse or fulfillment center.",
+    icon: "truck",
+  },
+  {
+    title: "Dedicated Sourcing Manager",
+    description:
+      "Every inquiry is assigned a sourcing manager who coordinates suppliers, updates, samples, and production through delivery.",
+    icon: "user-check",
+  },
+];
+
+/** @deprecated Use PRACTICAL_SERVICES */
+export const DIFFERENTIATORS = PRACTICAL_SERVICES;
 
 export const AUDIENCE_SECTIONS = [
   {
     id: "ecommerce",
     title: "Built for e-commerce sellers",
-    subtitle: "Trusted by growing online brands",
+    subtitle: "Sourcing for marketplace and D2C brands",
     description:
-      "Whether you sell on marketplaces or your own store, we help you launch and scale with custom branding, packaging upgrades, and product refinements. From prototype to bulk production, our team builds a cost-effective plan around your specifications and margins.",
+      "We help online sellers source from verified Indian factories with support for custom branding, packaging, and product specifications. From sample approval to bulk production, we coordinate suppliers around your MOQ and margin targets.",
     image: "/images/hero/amazon-warehouse.jpg",
     imageAlt: "E-commerce fulfillment and product preparation",
     reverse: false,
@@ -79,9 +144,9 @@ export const AUDIENCE_SECTIONS = [
   {
     id: "dropshipping",
     title: "Dropshipping at factory-direct prices",
-    subtitle: "Flexible, low-inventory fulfillment",
+    subtitle: "Factory-direct sourcing with flexible MOQs",
     description:
-      "Our India sourcing network gives dropshippers a real edge: lower unit costs, dependable lead times, and faster international shipping. We stand behind every shipment with compensation for lost or defective orders, so you can sell with confidence.",
+      "Source from verified manufacturers with quoted lead times and shipping options suited to dropship and low-inventory models. We coordinate production, packing, and export logistics for each order.",
     image: "/images/hero/dropshipping-logistics.jpg",
     imageAlt: "Global dropshipping logistics and delivery",
     reverse: true,
@@ -89,9 +154,9 @@ export const AUDIENCE_SECTIONS = [
   {
     id: "retailers",
     title: "Reliable sourcing for retailers",
-    subtitle: "Save up to 30% vs. local suppliers",
+    subtitle: "Multi-SKU procurement from India",
     description:
-      "We connect retailers — from supermarkets to specialty stores — with verified Indian manufacturers across hundreds of SKUs. As your supply chain partner, we coordinate multiple vendors, consolidate shipments, and offer credit terms that support steady growth.",
+      "We connect retailers with verified manufacturers across product categories, coordinate multiple vendors when needed, and consolidate shipments to simplify import logistics.",
     image: "/images/hero/retail-sourcing.jpg",
     imageAlt: "Retail store product sourcing",
     reverse: false,
@@ -99,76 +164,16 @@ export const AUDIENCE_SECTIONS = [
   {
     id: "enterprises",
     title: "Procurement for enterprises and institutions",
-    subtitle: "Predictable timelines. Rigorous quality.",
+    subtitle: "Documented sourcing and QC workflows",
     description:
-      "Government agencies, schools, and large organizations rely on us for category-wide procurement. No matter the order size or complexity, we deliver on schedule with documented quality control at every stage.",
+      "Government agencies, institutions, and large buyers use us for structured procurement — supplier verification, sample approval, inspection reports, and export documentation at each stage.",
     image: "/images/hero/enterprise-procurement.jpg",
     imageAlt: "Enterprise procurement and supply chain",
     reverse: true,
   },
 ];
 
-export const DIFFERENTIATORS = [
-  {
-    title: "Quality Assurance",
-    description:
-      "Quality is non-negotiable. We run more thorough inspections than typical third-party agencies — included at no extra charge. Our team can perform piece-by-piece checks to drive defect rates down before goods leave the factory.",
-    icon: "shield-check",
-  },
-  {
-    title: "Transparent Pricing",
-    description:
-      "Competitive landed costs are central to what we do. Unlike agents who quote low fees but inflate product prices, we share factory quotes openly and welcome side-by-side comparisons so you always know what you are paying for.",
-    icon: "indian-rupee",
-  },
-  {
-    title: "Long-Term Partnership",
-    description:
-      "Every client matters — from first-time importers to established brands. We work to resolve quality issues quickly, secure fair compensation when problems arise, and build relationships that last beyond a single order.",
-    icon: "handshake",
-  },
-  {
-    title: "Experienced Sourcing Team",
-    description:
-      "Over 200 specialists cover electronics, textiles, handicrafts, industrial goods, and more. Each agent brings years of on-the-ground experience negotiating with Indian manufacturers on your behalf.",
-    icon: "users",
-  },
-  {
-    title: "In-House Packaging",
-    description:
-      "Our facilities include dedicated packaging lines for custom bundles, accessory kits, and small-batch private label runs that many factories cannot handle — plus full pre-shipment inspection before dispatch.",
-    icon: "package",
-  },
-  {
-    title: "Scale-Ready Services",
-    description:
-      "Fast-growing companies get dedicated account teams, credit terms after delivery, and tailored workflows — so your sourcing operation scales as fast as your sales channels do.",
-    icon: "trending-up",
-  },
-];
-
-export const VALUE_ADDED = [
-  {
-    title: "Factory & Supplier Audit",
-    description: "On-site visits and supplier assessments before you commit to production.",
-    icon: "building-2",
-  },
-  {
-    title: "Piece-by-Piece Inspection",
-    description: "Granular QC to catch defects early and protect your brand reputation.",
-    icon: "search",
-  },
-  {
-    title: "Warehousing & Storage",
-    description: "Affordable storage in India for flexible shipping and order consolidation.",
-    icon: "warehouse",
-  },
-  {
-    title: "Product Photography",
-    description: "Professional lifestyle and catalog images ready for your listings and ads.",
-    icon: "camera",
-  },
-];
+export const VALUE_ADDED = PRACTICAL_SERVICES.slice(0, 4);
 
 export const TESTIMONIALS = [
   {
@@ -377,7 +382,7 @@ export const SERVICE_PAGES: Record<string, { title: string; subtitle: string; de
   pricing: {
     title: "Sourcing & Purchasing",
     subtitle: "End-to-end procurement from Indian factories",
-    description: "From supplier discovery to final delivery, our sourcing team manages the full procurement cycle. Submit your product enquiry and receive competitive quotes within 48 hours.",
+    description: "From supplier discovery to final delivery, our sourcing team manages the full procurement cycle. Submit your product enquiry and receive an initial response within 24 hours.",
     features: ["RFQ creation & tracking", "Multi-supplier quote comparison", "Factory verification & audits", "Negotiation management", "Purchase order management", "Production follow-up"],
     image: "/images/hero/amazon-warehouse.jpg",
   },

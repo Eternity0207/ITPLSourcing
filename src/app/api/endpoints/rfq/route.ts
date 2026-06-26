@@ -180,7 +180,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: "Sourcing enquiry submitted successfully. Expect a response within 48 hours.",
+      message: "Sourcing enquiry submitted successfully. Expect a response within 24 hours.",
       rfqId: `RFQ-${enquiryId}`,
       attachments: attachments.map((a) => a.originalName),
     });
