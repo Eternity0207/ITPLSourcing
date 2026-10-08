@@ -4,7 +4,8 @@ import { useRef, useState } from "react";
 import { Paperclip, X } from "lucide-react";
 import { SITE, URGENCY_OPTIONS } from "@/data/site";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024;
+// Vercel rejects request bodies over 4.5 MB, so keep all attachments combined under that.
+const MAX_TOTAL_SIZE = 4 * 1024 * 1024;
 const MAX_FILES = 5;
 const ACCEPTED_TYPES = [
   "image/jpeg",
@@ -73,8 +74,9 @@ export default function ContactForm() {
         setFileError(`You can upload up to ${MAX_FILES} files.`);
         break;
       }
-      if (file.size > MAX_FILE_SIZE) {
-        setFileError(`"${file.name}" exceeds the 10 MB limit.`);
+      const totalSize = next.reduce((sum, f) => sum + f.size, 0);
+      if (totalSize + file.size > MAX_TOTAL_SIZE) {
+        setFileError(`"${file.name}" would exceed the 4 MB total attachment limit.`);
         continue;
       }
       if (!ACCEPTED_TYPES.includes(file.type) && !file.name.match(/\.(dwg|dxf|ai|psd|svg)$/i)) {
@@ -240,12 +242,12 @@ export default function ContactForm() {
         </label>
         <p className="mb-2 text-xs text-text-muted">
           Product schematics, design files, sample images, specification documents. Up to {MAX_FILES}{" "}
-          files, 10 MB each. Supported: images, PDF, Word, Excel, ZIP, DWG, AI, PSD.
+          files, 4 MB total. Supported: images, PDF, Word, Excel, ZIP, DWG, AI, PSD.
         </p>
         <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-primary/30 bg-accent/50 px-4 py-8 transition-colors hover:border-primary/50 hover:bg-accent">
           <Paperclip className="mb-2 h-6 w-6 text-primary" />
           <span className="text-sm font-medium text-text">Click to upload or drag files here</span>
-          <span className="mt-1 text-xs text-text-muted">Max 10 MB per file</span>
+          <span className="mt-1 text-xs text-text-muted">Max 4 MB total</span>
           <input
             ref={fileInputRef}
             type="file"

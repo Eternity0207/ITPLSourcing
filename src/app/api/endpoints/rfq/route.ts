@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
-import { sendSourcingEnquiryEmail, type SourcingEnquiry } from "@/lib/email";
+import {
+  sendSourcingEnquiryEmail,
+  type EnquiryAttachment,
+  type SourcingEnquiry,
+} from "@/lib/email";
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const UPLOADS_DIR = path.join(DATA_DIR, "uploads");
-const MAX_FILE_SIZE = 10 * 1024 * 1024;
+// Vercel rejects request bodies over 4.5 MB, so keep all attachments combined under that.
+const MAX_TOTAL_SIZE = 4 * 1024 * 1024;
 const MAX_FILES = 5;
 
 const ALLOWED_TYPES = new Set([
@@ -27,65 +28,21 @@ function isAllowedFile(file: File) {
   return /\.(dwg|dxf|ai|psd|svg)$/i.test(file.name);
 }
 
-function sanitizeFilename(name: string) {
-  return name.replace(/[^a-zA-Z0-9._-]/g, "_");
-}
-
-async function ensureDataDir() {
-  await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.mkdir(UPLOADS_DIR, { recursive: true });
-}
-
-async function appendJson(filename: string, data: unknown) {
-  await ensureDataDir();
-  const filePath = path.join(DATA_DIR, filename);
-  let existing: unknown[] = [];
-  try {
-    const content = await fs.readFile(filePath, "utf-8");
-    existing = JSON.parse(content);
-  } catch {
-    existing = [];
-  }
-  const id = Date.now();
-  existing.push({
-    ...(data as object),
-    id,
-    status: "pending",
-    createdAt: new Date().toISOString(),
-  });
-  await fs.writeFile(filePath, JSON.stringify(existing, null, 2));
-  return id;
-}
-
-async function saveAttachments(files: File[], enquiryId: number) {
-  if (!files.length) return [];
-
-  const enquiryDir = path.join(UPLOADS_DIR, String(enquiryId));
-  await fs.mkdir(enquiryDir, { recursive: true });
-
-  const saved: { originalName: string; storedName: string; size: number; type: string }[] = [];
+async function readAttachments(files: File[]): Promise<EnquiryAttachment[]> {
+  const attachments: EnquiryAttachment[] = [];
 
   for (const file of files) {
     if (!isAllowedFile(file)) {
       throw new Error(`Unsupported file type: ${file.name}`);
     }
-    if (file.size > MAX_FILE_SIZE) {
-      throw new Error(`File too large: ${file.name}`);
-    }
-
-    const storedName = `${Date.now()}-${sanitizeFilename(file.name)}`;
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await fs.writeFile(path.join(enquiryDir, storedName), buffer);
-
-    saved.push({
-      originalName: file.name,
-      storedName,
-      size: file.size,
-      type: file.type,
+    attachments.push({
+      filename: file.name,
+      content: Buffer.from(await file.arrayBuffer()),
+      contentType: file.type || undefined,
     });
   }
 
-  return saved;
+  return attachments;
 }
 
 export async function POST(request: NextRequest) {
@@ -151,24 +108,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: `Maximum ${MAX_FILES} attachments allowed` }, { status: 400 });
     }
 
-    const enquiryId = await appendJson("rfqs.json", {
-      ...enquiry,
-      attachments: [],
-    });
-
-    let attachments: Awaited<ReturnType<typeof saveAttachments>> = [];
-    if (attachmentFiles.length) {
-      attachments = await saveAttachments(attachmentFiles, enquiryId);
-
-      const filePath = path.join(DATA_DIR, "rfqs.json");
-      const content = await fs.readFile(filePath, "utf-8");
-      const rfqs = JSON.parse(content);
-      const index = rfqs.findIndex((r: { id: number }) => r.id === enquiryId);
-      if (index !== -1) {
-        rfqs[index].attachments = attachments;
-        await fs.writeFile(filePath, JSON.stringify(rfqs, null, 2));
-      }
+    const totalSize = attachmentFiles.reduce((sum, file) => sum + file.size, 0);
+    if (totalSize > MAX_TOTAL_SIZE) {
+      return NextResponse.json({ error: "Attachments must be 4 MB or less in total" }, { status: 400 });
     }
+
+    const enquiryId = Date.now();
+    const attachments = await readAttachments(attachmentFiles);
 
     try {
       await sendSourcingEnquiryEmail(enquiry, enquiryId, attachments);
@@ -182,31 +128,10 @@ export async function POST(request: NextRequest) {
       success: true,
       message: "Sourcing enquiry submitted successfully. Expect a response within 24 hours.",
       rfqId: `RFQ-${enquiryId}`,
-      attachments: attachments.map((a) => a.originalName),
+      attachments: attachments.map((a) => a.filename),
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Internal server error";
     return NextResponse.json({ error: message }, { status: 500 });
-  }
-}
-
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get("id");
-
-  try {
-    const filePath = path.join(DATA_DIR, "rfqs.json");
-    const content = await fs.readFile(filePath, "utf-8");
-    const rfqs = JSON.parse(content);
-
-    if (id) {
-      const rfq = rfqs.find((r: { id: number }) => String(r.id) === id);
-      if (!rfq) return NextResponse.json({ error: "RFQ not found" }, { status: 404 });
-      return NextResponse.json(rfq);
-    }
-
-    return NextResponse.json(rfqs);
-  } catch {
-    return NextResponse.json([]);
   }
 }
