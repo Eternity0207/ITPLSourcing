@@ -5,7 +5,8 @@ import {
   type SourcingEnquiry,
 } from "@/lib/email";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024;
+// Vercel rejects request bodies over 4.5 MB, so keep all attachments combined under that.
+const MAX_TOTAL_SIZE = 4 * 1024 * 1024;
 const MAX_FILES = 5;
 
 const ALLOWED_TYPES = new Set([
@@ -34,10 +35,6 @@ async function readAttachments(files: File[]): Promise<EnquiryAttachment[]> {
     if (!isAllowedFile(file)) {
       throw new Error(`Unsupported file type: ${file.name}`);
     }
-    if (file.size > MAX_FILE_SIZE) {
-      throw new Error(`File too large: ${file.name}`);
-    }
-
     attachments.push({
       filename: file.name,
       content: Buffer.from(await file.arrayBuffer()),
@@ -109,6 +106,11 @@ export async function POST(request: NextRequest) {
 
     if (attachmentFiles.length > MAX_FILES) {
       return NextResponse.json({ error: `Maximum ${MAX_FILES} attachments allowed` }, { status: 400 });
+    }
+
+    const totalSize = attachmentFiles.reduce((sum, file) => sum + file.size, 0);
+    if (totalSize > MAX_TOTAL_SIZE) {
+      return NextResponse.json({ error: "Attachments must be 4 MB or less in total" }, { status: 400 });
     }
 
     const enquiryId = Date.now();
