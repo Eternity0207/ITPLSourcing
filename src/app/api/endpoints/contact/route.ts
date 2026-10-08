@@ -28,7 +28,8 @@ export async function POST(request: NextRequest) {
       success: true,
       message: "Contact inquiry received. Our team will respond within 24 hours.",
     });
-  } catch {
+  } catch (error) {
+    console.error("Failed to send notification email:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

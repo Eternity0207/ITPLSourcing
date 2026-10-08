@@ -21,7 +21,8 @@ export async function POST(request: NextRequest) {
       message: "Thank you! Your download link will be sent to your email.",
       downloadUrl: "/import-from-india-tutorial",
     });
-  } catch {
+  } catch (error) {
+    console.error("Failed to send notification email:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

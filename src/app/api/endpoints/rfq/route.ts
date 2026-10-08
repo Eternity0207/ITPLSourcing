@@ -119,6 +119,7 @@ export async function POST(request: NextRequest) {
     try {
       await sendSourcingEnquiryEmail(enquiry, enquiryId, attachments);
     } catch (emailError) {
+      console.error("Failed to send sourcing enquiry email:", emailError);
       const message =
         emailError instanceof Error ? emailError.message : "Failed to send notification email";
       return NextResponse.json({ error: message }, { status: 502 });
@@ -131,6 +132,7 @@ export async function POST(request: NextRequest) {
       attachments: attachments.map((a) => a.filename),
     });
   } catch (error) {
+    console.error("RFQ submission failed:", error);
     const message = error instanceof Error ? error.message : "Internal server error";
     return NextResponse.json({ error: message }, { status: 500 });
   }
