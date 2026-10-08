@@ -56,6 +56,7 @@ function formatFileSize(bytes: number) {
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [files, setFiles] = useState<File[]>([]);
+  const [submitError, setSubmitError] = useState("");
   const [fileError, setFileError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -99,6 +100,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("loading");
     setFileError("");
+    setSubmitError("");
 
     try {
       const payload = new FormData();
@@ -117,7 +119,7 @@ export default function ContactForm() {
         if (fileInputRef.current) fileInputRef.current.value = "";
       } else {
         const data = await res.json().catch(() => null);
-        setFileError(data?.error || "Submission failed. Please try again.");
+        setSubmitError(data?.error || "Submission failed. Please try again.");
         setStatus("error");
       }
     } catch {
@@ -327,8 +329,10 @@ export default function ContactForm() {
           Thank you! Your enquiry has been received. Our team will respond within 24 hours.
         </p>
       )}
-      {status === "error" && !fileError && (
-        <p className="text-center text-sm text-red-600">Something went wrong. Please try again.</p>
+      {status === "error" && (
+        <p className="text-center text-sm text-red-600">
+          {submitError || "Something went wrong. Please try again."}
+        </p>
       )}
     </form>
   );
