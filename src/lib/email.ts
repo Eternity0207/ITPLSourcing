@@ -1,13 +1,10 @@
 import nodemailer from "nodemailer";
-import { promises as fs } from "fs";
-import path from "path";
 import { SITE, URGENCY_OPTIONS } from "@/data/site";
 
-type SavedAttachment = {
-  originalName: string;
-  storedName: string;
-  size: number;
-  type: string;
+export type EnquiryAttachment = {
+  filename: string;
+  content: Buffer;
+  contentType?: string;
 };
 
 export type SourcingEnquiry = {
@@ -95,7 +92,7 @@ function formatConfirmationText(enquiry: SourcingEnquiry, enquiryId: number) {
 export async function sendSourcingEnquiryEmail(
   enquiry: SourcingEnquiry,
   enquiryId: number,
-  attachments: SavedAttachment[],
+  attachments: EnquiryAttachment[],
 ) {
   const transporter = getTransporter();
   if (!transporter) {
@@ -103,15 +100,6 @@ export async function sendSourcingEnquiryEmail(
       "Email is not configured. Set SMTP_USER and SMTP_PASS environment variables.",
     );
   }
-
-  const uploadsDir = path.join(process.cwd(), "data", "uploads", String(enquiryId));
-  const mailAttachments = await Promise.all(
-    attachments.map(async (file) => ({
-      filename: file.originalName,
-      content: await fs.readFile(path.join(uploadsDir, file.storedName)),
-      contentType: file.type || undefined,
-    })),
-  );
 
   const inbox = process.env.NOTIFICATION_EMAIL || SITE.notificationEmail;
   const from = process.env.SMTP_FROM || process.env.SMTP_USER;
@@ -123,7 +111,7 @@ export async function sendSourcingEnquiryEmail(
       replyTo: enquiry.email,
       subject: `[${SITE.name}] New sourcing enquiry from ${enquiry.contactName}`,
       text: formatEnquiryText(enquiry, enquiryId),
-      attachments: mailAttachments,
+      attachments,
     }),
     transporter.sendMail({
       from: `"${SITE.name}" <${from}>`,
@@ -133,4 +121,32 @@ export async function sendSourcingEnquiryEmail(
       text: formatConfirmationText(enquiry, enquiryId),
     }),
   ]);
+}
+
+export async function sendNotificationEmail({
+  subject,
+  text,
+  replyTo,
+}: {
+  subject: string;
+  text: string;
+  replyTo?: string;
+}) {
+  const transporter = getTransporter();
+  if (!transporter) {
+    throw new Error(
+      "Email is not configured. Set SMTP_USER and SMTP_PASS environment variables.",
+    );
+  }
+
+  const inbox = process.env.NOTIFICATION_EMAIL || SITE.notificationEmail;
+  const from = process.env.SMTP_FROM || process.env.SMTP_USER;
+
+  await transporter.sendMail({
+    from: `"${SITE.name}" <${from}>`,
+    to: inbox,
+    replyTo,
+    subject: `[${SITE.name}] ${subject}`,
+    text,
+  });
 }

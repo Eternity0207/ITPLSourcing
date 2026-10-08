@@ -1,26 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
-
-const DATA_DIR = path.join(process.cwd(), "data");
-
-async function ensureDataDir() {
-  await fs.mkdir(DATA_DIR, { recursive: true });
-}
-
-async function appendJson(filename: string, data: unknown) {
-  await ensureDataDir();
-  const filePath = path.join(DATA_DIR, filename);
-  let existing: unknown[] = [];
-  try {
-    const content = await fs.readFile(filePath, "utf-8");
-    existing = JSON.parse(content);
-  } catch {
-    existing = [];
-  }
-  existing.push({ ...data as object, id: Date.now(), createdAt: new Date().toISOString() });
-  await fs.writeFile(filePath, JSON.stringify(existing, null, 2));
-}
+import { sendNotificationEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,7 +10,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    await appendJson("contacts.json", { firstName, lastName, email, company, type, message });
+    await sendNotificationEmail({
+      subject: `New contact inquiry from ${firstName} ${lastName}`,
+      replyTo: email,
+      text: [
+        `Name: ${firstName} ${lastName}`,
+        `Email: ${email}`,
+        `Company: ${company || "—"}`,
+        `Inquiry Type: ${type || "—"}`,
+        "",
+        "Message:",
+        message,
+      ].join("\n"),
+    });
 
     return NextResponse.json({
       success: true,
@@ -39,15 +30,5 @@ export async function POST(request: NextRequest) {
     });
   } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-  }
-}
-
-export async function GET() {
-  try {
-    const filePath = path.join(DATA_DIR, "contacts.json");
-    const content = await fs.readFile(filePath, "utf-8");
-    return NextResponse.json(JSON.parse(content));
-  } catch {
-    return NextResponse.json([]);
   }
 }
