@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { saveEnquiryToDrive } from "@/lib/drive";
 import {
+  formatEnquiryText,
   sendSourcingEnquiryEmail,
+  type DriveStatus,
   type EnquiryAttachment,
   type SourcingEnquiry,
 } from "@/lib/email";
@@ -116,8 +119,27 @@ export async function POST(request: NextRequest) {
     const enquiryId = Date.now();
     const attachments = await readAttachments(attachmentFiles);
 
+    // Drive is a backup copy; if it fails the enquiry still goes out by email.
+    const drive: DriveStatus = { folderLink: null, failed: false };
     try {
-      await sendSourcingEnquiryEmail(enquiry, enquiryId, attachments);
+      drive.folderLink = await saveEnquiryToDrive(
+        `RFQ-${enquiryId} - ${enquiry.companyName || enquiry.contactName}`,
+        [
+          ...attachments,
+          {
+            filename: `RFQ-${enquiryId} enquiry.txt`,
+            content: Buffer.from(formatEnquiryText(enquiry, enquiryId, attachments)),
+            contentType: "text/plain",
+          },
+        ],
+      );
+    } catch (driveError) {
+      console.error("Failed to save sourcing enquiry to Google Drive:", driveError);
+      drive.failed = true;
+    }
+
+    try {
+      await sendSourcingEnquiryEmail(enquiry, enquiryId, attachments, drive);
     } catch (emailError) {
       console.error("Failed to send sourcing enquiry email:", emailError);
       const message =
