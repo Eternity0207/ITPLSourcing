@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "claude/serene-ramanujan-hp5rdf",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "claude/serene-ramanujan-hp5rdf": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "claude/serene-ramanujan-hp5rdf",
+    "origin"
+  ]
+}
