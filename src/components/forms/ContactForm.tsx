@@ -59,6 +59,7 @@ export default function ContactForm() {
   const [submitError, setSubmitError] = useState("");
   const [fileError, setFileError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const inputClass =
@@ -246,7 +247,21 @@ export default function ContactForm() {
           Product schematics, design files, sample images, specification documents. Up to {MAX_FILES}{" "}
           files, 4 MB total. Supported: images, PDF, Word, Excel, ZIP, DWG, AI, PSD.
         </p>
-        <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-primary/30 bg-accent/50 px-4 py-8 transition-colors hover:border-primary/50 hover:bg-accent">
+        <label
+          onDragOver={(e) => {
+            e.preventDefault();
+            setIsDragging(true);
+          }}
+          onDragLeave={() => setIsDragging(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setIsDragging(false);
+            addFiles(e.dataTransfer.files);
+          }}
+          className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-4 py-8 transition-colors hover:border-primary/50 hover:bg-accent ${
+            isDragging ? "border-primary bg-accent" : "border-primary/30 bg-accent/50"
+          }`}
+        >
           <Paperclip className="mb-2 h-6 w-6 text-primary" />
           <span className="text-sm font-medium text-text">Click to upload or drag files here</span>
           <span className="mt-1 text-xs text-text-muted">Max 4 MB total</span>
