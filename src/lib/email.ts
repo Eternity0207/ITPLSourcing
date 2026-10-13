@@ -7,6 +7,11 @@ export type EnquiryAttachment = {
   contentType?: string;
 };
 
+export type DriveStatus = {
+  folderLink: string | null;
+  failed: boolean;
+};
+
 export type SourcingEnquiry = {
   contactName: string;
   companyName: string;
@@ -50,10 +55,19 @@ function formatAttachmentList(attachments: EnquiryAttachment[]) {
   ];
 }
 
-function formatEnquiryText(
+function formatDriveStatus(drive?: DriveStatus) {
+  if (drive?.folderLink) return ["", `Google Drive folder: ${drive.folderLink}`];
+  if (drive?.failed) {
+    return ["", "Google Drive: upload failed, so files are only attached to this email."];
+  }
+  return [];
+}
+
+export function formatEnquiryText(
   enquiry: SourcingEnquiry,
   enquiryId: number,
   attachments: EnquiryAttachment[],
+  drive?: DriveStatus,
 ) {
   return [
     `New product sourcing enquiry — RFQ-${enquiryId}`,
@@ -76,6 +90,7 @@ function formatEnquiryText(
     enquiry.productLinks || "—",
     "",
     ...formatAttachmentList(attachments),
+    ...formatDriveStatus(drive),
     "",
     `Submitted via ${SITE.domain}`,
   ].join("\n");
@@ -107,6 +122,7 @@ export async function sendSourcingEnquiryEmail(
   enquiry: SourcingEnquiry,
   enquiryId: number,
   attachments: EnquiryAttachment[],
+  drive?: DriveStatus,
 ) {
   const transporter = getTransporter();
   if (!transporter) {
@@ -124,7 +140,7 @@ export async function sendSourcingEnquiryEmail(
       to: inbox,
       replyTo: enquiry.email,
       subject: `[${SITE.name}] New sourcing enquiry from ${enquiry.contactName}`,
-      text: formatEnquiryText(enquiry, enquiryId, attachments),
+      text: formatEnquiryText(enquiry, enquiryId, attachments, drive),
       attachments,
     }),
     transporter.sendMail({
