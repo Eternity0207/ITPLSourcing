@@ -42,7 +42,19 @@ function getTransporter() {
   });
 }
 
-function formatEnquiryText(enquiry: SourcingEnquiry, enquiryId: number) {
+function formatAttachmentList(attachments: EnquiryAttachment[]) {
+  if (!attachments.length) return ["Attachments: None"];
+  return [
+    `Attachments (${attachments.length}, attached to this email):`,
+    ...attachments.map((file) => `- ${file.filename}`),
+  ];
+}
+
+function formatEnquiryText(
+  enquiry: SourcingEnquiry,
+  enquiryId: number,
+  attachments: EnquiryAttachment[],
+) {
   return [
     `New product sourcing enquiry — RFQ-${enquiryId}`,
     "",
@@ -62,6 +74,8 @@ function formatEnquiryText(enquiry: SourcingEnquiry, enquiryId: number) {
     "",
     "Product Links:",
     enquiry.productLinks || "—",
+    "",
+    ...formatAttachmentList(attachments),
     "",
     `Submitted via ${SITE.domain}`,
   ].join("\n");
@@ -110,7 +124,7 @@ export async function sendSourcingEnquiryEmail(
       to: inbox,
       replyTo: enquiry.email,
       subject: `[${SITE.name}] New sourcing enquiry from ${enquiry.contactName}`,
-      text: formatEnquiryText(enquiry, enquiryId),
+      text: formatEnquiryText(enquiry, enquiryId, attachments),
       attachments,
     }),
     transporter.sendMail({
