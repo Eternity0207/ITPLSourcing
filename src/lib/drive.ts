@@ -13,8 +13,18 @@ const FOLDER_MIME_TYPE = "application/vnd.google-apps.folder";
 
 export type DriveFile = {
   filename: string;
-  content: Buffer;
+  content: Buffer | Uint8Array;
   contentType?: string;
+  // Private key/value tags, used by the invoice system to find its own files.
+  appProperties?: Record<string, string>;
+};
+
+export type DriveListedFile = {
+  id: string;
+  name: string;
+  webViewLink?: string;
+  createdTime?: string;
+  appProperties?: Record<string, string>;
 };
 
 type DriveAuth =
@@ -44,9 +54,9 @@ function getDriveAuth(): DriveAuth | null {
   return null;
 }
 
-function getDriveConfig(): DriveConfig | null {
+function getDriveConfig(folderId = process.env.GOOGLE_DRIVE_FOLDER_ID): DriveConfig | null {
   const auth = getDriveAuth();
-  const parentFolderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+  const parentFolderId = folderId;
   if (!auth || !parentFolderId) return null;
   return { auth, parentFolderId };
 }
@@ -74,7 +84,7 @@ async function requestToken(params: Record<string, string>) {
   return data.access_token;
 }
 
-async function getAccessToken(auth: DriveAuth) {
+async function getAccessToken(auth: DriveAuth): Promise<string> {
   if (auth.type === "oauth") {
     return requestToken({
       grant_type: "refresh_token",
@@ -120,31 +130,114 @@ async function createFolder(token: string, name: string, parentId: string) {
   return (await res.json()) as { id: string; webViewLink: string };
 }
 
-async function uploadFile(token: string, file: DriveFile, parentId: string) {
+function multipartBody(file: DriveFile, metadata: Record<string, unknown>) {
   const boundary = `rfq-${randomUUID()}`;
-  const metadata = JSON.stringify({ name: file.filename, parents: [parentId] });
   const body = Buffer.concat([
     Buffer.from(
-      `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${metadata}\r\n` +
+      `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(metadata)}\r\n` +
         `--${boundary}\r\nContent-Type: ${file.contentType || "application/octet-stream"}\r\n\r\n`,
     ),
-    file.content,
+    Buffer.from(file.content),
     Buffer.from(`\r\n--${boundary}--`),
   ]);
+  return { body, contentType: `multipart/related; boundary=${boundary}` };
+}
 
-  const res = await fetch(`${DRIVE_UPLOAD_URL}?uploadType=multipart&supportsAllDrives=true&fields=id`, {
+async function uploadFile(token: string, file: DriveFile, parentId: string) {
+  const { body, contentType } = multipartBody(file, {
+    name: file.filename,
+    parents: [parentId],
+    ...(file.appProperties ? { appProperties: file.appProperties } : {}),
+  });
+
+  const res = await fetch(`${DRIVE_UPLOAD_URL}?uploadType=multipart&supportsAllDrives=true&fields=id,webViewLink`, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": `multipart/related; boundary=${boundary}`,
-    },
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": contentType },
     body,
   });
 
   if (!res.ok) {
     throw new Error(`Drive upload of "${file.filename}" failed (${res.status}): ${await res.text()}`);
   }
+
+  return (await res.json()) as { id: string; webViewLink: string };
 }
+
+async function updateFile(token: string, fileId: string, file: DriveFile) {
+  const { body, contentType } = multipartBody(file, {
+    name: file.filename,
+    ...(file.appProperties ? { appProperties: file.appProperties } : {}),
+  });
+
+  const res = await fetch(
+    `${DRIVE_UPLOAD_URL}/${fileId}?uploadType=multipart&supportsAllDrives=true&fields=id,webViewLink`,
+    { method: "PATCH", headers: { Authorization: `Bearer ${token}`, "Content-Type": contentType }, body },
+  );
+
+  if (!res.ok) {
+    throw new Error(`Drive update of "${file.filename}" failed (${res.status}): ${await res.text()}`);
+  }
+
+  return (await res.json()) as { id: string; webViewLink: string };
+}
+
+async function listFiles(token: string, query: string, pageSize = 100) {
+  const params = new URLSearchParams({
+    q: query,
+    pageSize: String(pageSize),
+    orderBy: "createdTime desc",
+    fields: "files(id,name,webViewLink,createdTime,appProperties)",
+    supportsAllDrives: "true",
+    includeItemsFromAllDrives: "true",
+  });
+  const res = await fetch(`${DRIVE_FILES_URL}?${params}`, { headers: { Authorization: `Bearer ${token}` } });
+
+  if (!res.ok) {
+    throw new Error(`Drive search failed (${res.status}): ${await res.text()}`);
+  }
+
+  return ((await res.json()) as { files: DriveListedFile[] }).files;
+}
+
+async function downloadFile(token: string, fileId: string) {
+  const res = await fetch(`${DRIVE_FILES_URL}/${fileId}?alt=media&supportsAllDrives=true`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Drive download failed (${res.status}): ${await res.text()}`);
+  }
+
+  return Buffer.from(await res.arrayBuffer());
+}
+
+/** Escapes a value for use inside a quoted Drive search query string. */
+export function driveQueryValue(value: string) {
+  return value.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+}
+
+/**
+ * Authenticated Drive helpers rooted at `folderId`, or null when Drive
+ * credentials or the folder are not configured.
+ */
+export async function connectDrive(folderId: string | undefined) {
+  const config = getDriveConfig(folderId);
+  if (!config) return null;
+
+  const token = await getAccessToken(config.auth);
+  return {
+    rootFolderId: config.parentFolderId,
+    list: (query: string, pageSize?: number) => listFiles(token, query, pageSize),
+    upload: (file: DriveFile, parentId: string) => uploadFile(token, file, parentId),
+    update: (fileId: string, file: DriveFile) => updateFile(token, fileId, file),
+    download: (fileId: string) => downloadFile(token, fileId),
+    createFolder: (name: string, parentId: string) => createFolder(token, name, parentId),
+  };
+}
+
+export type DriveConnection = NonNullable<Awaited<ReturnType<typeof connectDrive>>>;
+
+export const DRIVE_FOLDER_MIME_TYPE = FOLDER_MIME_TYPE;
 
 /**
  * Creates a folder for the enquiry inside GOOGLE_DRIVE_FOLDER_ID and uploads the

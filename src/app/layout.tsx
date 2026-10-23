@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import SiteChrome from "@/components/layout/SiteChrome";
 import { SITE } from "@/data/site";
 
 const inter = Inter({
@@ -49,10 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <ScrollToTop />
+        <SiteChrome header={<Header />} footer={<><Footer /><ScrollToTop /></>}>
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

@@ -38,6 +38,7 @@ npm start
 | `/quality-control-service` | QC services |
 | `/import-from-india-tutorial` | Free sourcing tutorial |
 | `/sourcing-agent-guide` | Sourcing agent guide |
+| `/invoices` | Private PI / CI invoice generator (login required) |
 
 ## Environment Variables
 
@@ -53,6 +54,28 @@ Set these in Vercel → Project → Settings → Environment Variables (for Prod
 | `GOOGLE_DRIVE_FOLDER_ID` | No | Drive folder that RFQ folders are created in |
 | `GOOGLE_OAUTH_CLIENT_ID` / `GOOGLE_OAUTH_CLIENT_SECRET` / `GOOGLE_OAUTH_REFRESH_TOKEN` | No | Save to a regular Gmail account's Drive (option A) |
 | `GOOGLE_SERVICE_ACCOUNT_EMAIL` / `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` | No | Save to a Workspace Shared Drive (option B) |
+
+### Invoice system (`/invoices`)
+
+A private tool for creating **Proforma Invoices (PI)** and **Commercial Invoices (CI)** in the Intratrade template. Data can be typed into the form, pasted from Excel into the line-item grid, or imported from an `.xlsx`/`.csv` file (download the template from the editor). Each generated PDF is saved to Google Drive, and the running invoice number is kept there too.
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `INVOICE_ADMIN_USERNAME` / `INVOICE_ADMIN_PASSWORD` | Yes | The single login for `/invoices` |
+| `INVOICE_SESSION_SECRET` | Recommended | Long random string used to sign the login cookie (sessions last 12 hours) |
+| `INVOICE_DRIVE_FOLDER_ID` | No | Drive folder for invoices; defaults to `GOOGLE_DRIVE_FOLDER_ID`. Uses the same Google credentials as the RFQ form |
+| `INVOICE_PI_FOLDER_ID` / `INVOICE_CI_FOLDER_ID` | No | Use existing folders for PI / CI PDFs instead of the auto-created ones |
+| `INVOICE_PI_START` / `INVOICE_CI_START` | No | First number to issue when no counter exists yet, e.g. `1735` to continue after PI-07-1734 |
+
+Inside the invoice folder the app creates:
+
+- `Proforma Invoices/` and `Commercial Invoices/` with the PDFs, named `PI-07-1735 - Customer.pdf`
+- `Invoice Data/` with the JSON each PDF was made from, so an invoice can be reopened, corrected, or turned into a CI
+- `invoice-counter.json` with the last number used per type
+
+Numbers are `PI-<month>-<running number>` and `CI-<month>-<running number>`, with separate counters for PI and CI. Leave Invoice No. blank to take the next number; typing a number reuses it (after a confirmation if it already exists), and typing a higher one moves the counter forward. The next number is also checked against the files already in the folder, so a lost counter never reissues a number. Company and bank details live in `src/data/invoice.ts`. The box next to the declaration is left blank for the stamp and signature.
+
+Without Google credentials (local development only), invoices are saved under `./data/invoices` instead.
 
 ### Saving RFQ attachments to Google Drive
 

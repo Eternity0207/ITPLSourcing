@@ -58,3 +58,16 @@ body {
 .swiper-pagination-bullet-active {
   background: var(--color-primary) !important;
 }
+
+/* Internal invoice tool */
+.invoice-input {
+  @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-[#2E75B6] focus:ring-2 focus:ring-[#2E75B6]/20;
+}
+
+.invoice-btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#1F3864] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#2E75B6] disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.invoice-btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-[#2E75B6] hover:text-[#1F3864] disabled:cursor-not-allowed disabled:opacity-60;
+}
